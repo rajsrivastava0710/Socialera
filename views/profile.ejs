@@ -1,2 +1,7 @@
 
 	<h1>My FB // My Profile</h1>
+	<h2>Name:<%= user.name %></h2>
+	<h2>Email:<%= user.email %></h2>
+	<form action='/users/remove-session' method='post'>
+		<div><input type='submit' value='Logout'></div>
+	</form>

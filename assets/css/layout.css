@@ -1,4 +1,9 @@
 body{
 	margin: 0 0;
-	text-align: center;
+	/*text-align: center;*/
+	font-size: 2rem;
+	font-family: serif;
+}
+footer{
+	margin-top: 2rem;
 }
