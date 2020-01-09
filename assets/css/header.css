@@ -1,0 +1,8 @@
+header {
+  color: blue; }
+  header .flex {
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: space-between; }
+    header .flex div {
+      width: 33%; }
