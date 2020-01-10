@@ -1,8 +1,28 @@
 header {
-  color: blue; }
-  header .flex {
+  /*color:blue;*/ }
+  header .nav-bar {
+    background-color: #328be494; }
+  header .default-flex {
     display: flex;
-    flex-wrap: no-wrap;
-    justify-content: space-between; }
-    header .flex div {
-      width: 33%; }
+    align-items: center; }
+    header .default-flex .reverse-flex {
+      display: flex;
+      justify-content: flex-end; }
+    header .default-flex ._25per {
+      width: 25%;
+      padding: .3rem .8rem; }
+      header .default-flex ._25per #app-name {
+        color: blue;
+        font-size: 3rem; }
+    header .default-flex ._75per {
+      width: 75%; }
+      header .default-flex ._75per #nav-user {
+        background-color: #254cd4;
+        font-weight: 600;
+        font-family: sans-serif; }
+      header .default-flex ._75per div a {
+        color: white; }
+      header .default-flex ._75per .small-margin {
+        padding: 1rem 1rem 1rem 1rem; }
+        header .default-flex ._75per .small-margin .black-font {
+          color: black; }

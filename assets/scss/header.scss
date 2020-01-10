@@ -1,13 +1,44 @@
 header{
-	color:blue;
-	
-	.flex{
+	/*color:blue;*/
+	.nav-bar{
+		background-color: #328be494;
+	}
+	.default-flex{
 		display: flex;
-		flex-wrap: no-wrap;
-		justify-content: space-between;
-	
-		div{
-			width: 33%;
+		align-items: center;
+		.reverse-flex{
+			display: flex;
+			justify-content: flex-end;
+		}
+		._25per{
+			width: 25%;
+			padding: .3rem .8rem;
+			#app-name{
+				color:blue;
+				font-size:3rem;
+			}
+		}
+
+		._75per{
+			width: 75%;
+
+			#nav-user{
+			background-color: #254cd4;
+			font-weight: 600;
+    		font-family: sans-serif;
+			}
+			div{
+				a{
+					color: white;
+				}
+			}
+			.small-margin{
+				padding:1rem 1rem 1rem 1rem;
+
+				.black-font{
+					color: black;
+				}
+			}
 		}
 	}
 }

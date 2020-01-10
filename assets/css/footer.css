@@ -1,2 +1,5 @@
 footer {
-  color: green; }
+  height: auto;
+  color: green;
+  background-color: grey;
+  padding: 1rem 1rem; }

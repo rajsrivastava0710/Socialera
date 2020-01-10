@@ -1,20 +1,28 @@
 <header>
-	<div class='flex'>
-		<div><strong>fakebook</strong></div>
-		<% if(locals.user){ %>
-		<div><a href='/users/profile'><%= user.name %></a>
+	<div class='default-flex nav-bar'>
+		
+		<div class='_25per'>
+			<a id='app-name' href='/'><strong>fakebook</strong></a>
 		</div>
-		<div>
+	
+		<div class='_75per reverse-flex'>
+		<% if(locals.user){ %>
+		<div id='nav-user' class='small-margin'>
+			<a class='black-font' href='/users/profile'><%= user.name %></a>
+		</div>
+		<div class='small-margin'>
 			<a href='/users/remove-session'>LogOut</a>
 		</div>
 		<% }else{ %>
-		<div>
+		<div class='small-margin'>
 			<a href='/users/login'>Login</a>
 		</div>
 
-		<div>
+		<div class='small-margin'>
 			<a href='/users/signup'>SignUp</a>
 		</div>
+		
 		<% } %>
+		</div>
 	</div>
 </header>

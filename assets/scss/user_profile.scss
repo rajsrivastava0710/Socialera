@@ -1,6 +1,14 @@
 body{
-	background:cyan;
-	a{
-	color:red;
+	background-color:#d0ecf9;;
+	div{
+		&.top-margin{
+		margin:1rem 0 1rem 0;
+		}
+		&.auth-heading{
+			font-size:3rem;
+			font-weight: 600;
+			color:green;
+			margin: 0.5rem 0 1rem 0;
+		}
 	}
 }
