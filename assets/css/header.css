@@ -1,5 +1,6 @@
 header {
-  /*color:blue;*/ }
+  /*color:blue;*/
+  font-size: 2rem; }
   header .nav-bar {
     background-color: #328be494; }
   header .default-flex {
@@ -8,21 +9,21 @@ header {
     header .default-flex .reverse-flex {
       display: flex;
       justify-content: flex-end; }
-    header .default-flex ._25per {
-      width: 25%;
+    header .default-flex ._15per {
+      width: 15%;
       padding: .3rem .8rem; }
-      header .default-flex ._25per #app-name {
+      header .default-flex ._15per #app-name {
         color: blue;
         font-size: 3rem; }
-    header .default-flex ._75per {
-      width: 75%; }
-      header .default-flex ._75per #nav-user {
+    header .default-flex ._85per {
+      width: 85%; }
+      header .default-flex ._85per #nav-user {
         background-color: #254cd4;
         font-weight: 600;
         font-family: sans-serif; }
-      header .default-flex ._75per div a {
+      header .default-flex ._85per div a {
         color: white; }
-      header .default-flex ._75per .small-margin {
+      header .default-flex ._85per .small-margin {
         padding: 1rem 1rem 1rem 1rem; }
-        header .default-flex ._75per .small-margin .black-font {
+        header .default-flex ._85per .small-margin .black-font {
           color: black; }

@@ -1,0 +1,19 @@
+div.normal-flex {
+  display: flex; }
+
+div.main-head {
+  margin: 1.5rem .5rem 1.5rem 0;
+  font-size: 3rem; }
+
+section#feed-posts {
+  width: 70%;
+  padding: 1rem; }
+
+section#user-friends {
+  width: 30%;
+  padding: 1rem;
+  border-left: 1px solid grey; }
+
+section .main-sub-head {
+  margin: 1rem .5rem 1rem 0;
+  font-size: 2rem; }

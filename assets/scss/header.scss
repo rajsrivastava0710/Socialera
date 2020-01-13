@@ -1,5 +1,6 @@
 header{
 	/*color:blue;*/
+	font-size: 2rem;
 	.nav-bar{
 		background-color: #328be494;
 	}
@@ -10,8 +11,8 @@ header{
 			display: flex;
 			justify-content: flex-end;
 		}
-		._25per{
-			width: 25%;
+		._15per{
+			width: 15%;
 			padding: .3rem .8rem;
 			#app-name{
 				color:blue;
@@ -19,8 +20,8 @@ header{
 			}
 		}
 
-		._75per{
-			width: 75%;
+		._85per{
+			width: 85%;
 
 			#nav-user{
 			background-color: #254cd4;

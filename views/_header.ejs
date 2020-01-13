@@ -1,14 +1,14 @@
 <header>
 	<div class='default-flex nav-bar'>
 		
-		<div class='_25per'>
+		<div class='_15per'>
 			<a id='app-name' href='/'><strong>fakebook</strong></a>
 		</div>
 	
-		<div class='_75per reverse-flex'>
+		<div class='_85per reverse-flex'>
 		<% if(locals.user){ %>
 		<div id='nav-user' class='small-margin'>
-			<a class='black-font' href='/users/profile'><%= user.name %></a>
+			<a class='black-font' href='/users/profile/<%= user._id %>'><%= user.name %></a>
 		</div>
 		<div class='small-margin'>
 			<a href='/users/remove-session'>LogOut</a>

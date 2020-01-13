@@ -10,6 +10,8 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
+const flash = require('connect-flash');
+const custoMware = require('./config/middleware');
 const port = 8000;
 
 app.use(sassMiddleware({
@@ -66,6 +68,11 @@ app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
 //whenever app is initialised passport is also initialised and this function is called as middleware
+
+// connect-flash used after session is used
+app.use(flash());
+
+app.use(custoMware.setFlash);
 
 //EXPRESS router://Must be after passport.initialize
 app.use('/',require('./routes'));
