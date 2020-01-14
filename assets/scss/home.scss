@@ -1,24 +1,42 @@
 div{
-	&.normal-flex{
+	&#home-container{
 		display: flex;
 	}
 	&.main-head{
-		margin: 1.5rem .5rem 1.5rem 0;
+		margin: 1.5rem .5rem 1.5rem 1rem;
 		font-size: 3rem;
 	}
 }
 section{
 	&#feed-posts{
-		width: 70%;
+		width: 80%;
 		padding: 1rem;
 	}
 	&#user-friends{
-		width: 30%;
+		width: 20%;
 		padding: 1rem;
 		border-left: 1px solid grey;
 	}
+	#post-container{
+		ul{
+			/*list-style: none*/
+		}
+	}
+	#new-post-form{
+		margin-left: 1rem;
+		input[type='submit']{
+			font-size: 1.4rem;
+		    font-family: fantasy;
+		    color: #1c1b38;
+		    background: dodgerblue;
+		}
+		textarea{
+			resize: none;
+		}
+	}
 	.main-sub-head{
-		margin: 1rem .5rem 1rem 0;
-		font-size: 2rem;
+		margin: 1rem .5rem 1rem 1rem;
+		font-size: 3rem;
+		font-family: monospace;
 	}
 }
