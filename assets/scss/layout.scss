@@ -1,27 +1,14 @@
 $medium : 2rem;
 
 body{
-	background-color:#ded96487;
-	margin:0 0;
 	/*font-size:$medium;*/
-
-	span{
-		/*&#sticky-flash{
-			position: absolute;
-    		top: 4.4rem;
-    		left: 33rem;
-    		border: 2px solid grey;
-    		padding: .4rem;
-    		box-shadow: 0 0 10px 1px greenyellow;
-   			font-size: 1.4rem;
-    		font-family: monospace;
-    		background: #8dea98;
-		}*/
-	}
+	background-color:#f6f6fb8f;
+	margin:0 0;
 
 	#layout-body{
-	font-size: $medium; 
-	padding: 0 1rem;
-	min-height:72vh;
+		background: linear-gradient(45deg, #d0dbdebf, #f4e5cee6);
+		font-size: $medium; 
+		padding: 0;
+		min-height:72vh;
 	}
 }

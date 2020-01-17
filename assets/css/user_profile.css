@@ -1,9 +1,17 @@
 body {
-  background-color: #d0ecf9; }
-  body div.top-margin {
-    margin: 1rem 0 1rem 0; }
-  body div.auth-heading {
-    font-size: 3rem;
-    font-weight: 600;
-    color: green;
-    margin: 0.5rem 0 1rem 0; }
+  background-color: #f6f6fb8f; }
+  body div {
+    /*&.auth-heading{
+			font-size:3rem;
+			font-weight: 600;
+			color:green;
+			margin: 0.5rem 0 1rem 0;
+		}*/ }
+    body div.top-padding {
+      padding: 1rem 1rem; }
+    body div.center {
+      text-align: center; }
+    body div button {
+      font-size: 1.4rem;
+      border: 2px solid blueviolet;
+      background: #35b1e4; }

@@ -11,8 +11,25 @@ section#feed-posts {
 
 section#user-friends {
   width: 20%;
-  padding: 1rem;
-  border-left: 1px solid grey; }
+  padding: 0;
+  border-left: 2px solid #2b1295; }
+  section#user-friends div.sidebar-heading {
+    padding: 1rem .8rem;
+    background: #80bdb196;
+    font-family: cursive;
+    font-weight: 600;
+    color: #393ebd; }
+  section#user-friends p {
+    padding: .3rem 1rem;
+    margin: 0 0; }
+    section#user-friends p a {
+      color: black;
+      font-size: 1.5rem;
+      font-family: sans-serif; }
+  section#user-friends p:nth-of-type(even) {
+    background-color: #9cf476ba; }
+  section#user-friends p:nth-of-type(odd) {
+    background-color: #d17d956b; }
 
 section #post-container ul {
   /*list-style: none*/ }

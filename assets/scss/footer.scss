@@ -1,8 +1,14 @@
 footer{
-	font-size:2rem;
-	height:auto;
-	color:green;
-	background-color: grey;
-	padding:1rem 1rem;
-
+	font-size: 2rem;
+    height: auto;
+    color: #bd0d0d;
+    background-color: #bcb4b1;
+    padding: 1rem 1rem;
+    div{
+    	font-weight:600;
+    	small{
+    	color:#0b256b;
+    	font-weight:200;
+    	}
+    }
 }

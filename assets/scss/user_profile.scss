@@ -1,14 +1,22 @@
 body{
-	background-color:#d0ecf9;;
+	background-color:#f6f6fb8f;
 	div{
-		&.top-margin{
-		margin:1rem 0 1rem 0;
+		&.top-padding{
+		padding:1rem 1rem;
 		}
-		&.auth-heading{
+		&.center{
+			text-align: center;
+		}
+		/*&.auth-heading{
 			font-size:3rem;
 			font-weight: 600;
 			color:green;
 			margin: 0.5rem 0 1rem 0;
+		}*/
+		button{
+		font-size: 1.4rem;
+    border: 2px solid blueviolet;
+    background: #35b1e4;
 		}
 	}
 }

@@ -12,6 +12,8 @@ console.log("User Router loaded");
 //using middleware
 router.get('/profile/:id', passport.checkAuthentication ,userController.profile);
 
+router.get('/profile/update/:id',passport.checkAuthentication,userController.modify);
+
 router.post('/update/:id', passport.checkAuthentication ,userController.update);
 
 router.get('/login',userController.login);

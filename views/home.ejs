@@ -30,23 +30,25 @@
 
 
 <section id='user-friends'>
+	<div class='sidebar-heading'>
 	<% if(locals.user){ %>
 	<big>Friends:</big>
 	<% }else{ %>
 	<big>Users</big>
 	<% } %>
+	</div>
 	<% for(u of all_users){ %>
-		<p>
-			<!-- all users other than the logged in -->
 		<% if(!locals.user){ %>
-		<a href='/users/profile/<%= u.id %>'><%= u.name %></a>
+		<p>
+			<a href='/users/profile/<%= u.id %>'><%= u.name.split(" ")[0] %></a>
+		</p>
 		<% }else{ %>
 		<% if(locals.user.id != u.id){ %>
-			<a href='/users/profile/<%= u.id %>'><%= u.name %></a>
-		<% } %>
-		<% } %>
-		
+		<p>
+			<a href='/users/profile/<%= u.id %>'><%= u.name.split(" ")[0] %></a>
 		</p>
+		<% } %>
+		<% } %>
 	<% } %>
 </section>
 </div>

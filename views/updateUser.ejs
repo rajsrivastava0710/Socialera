@@ -1,0 +1,11 @@
+<link rel="stylesheet" type="text/css" href="/css/update_profile.css">
+
+<form action="/users/update/<%= profile_user.id %>" method='post'>
+	<div id='new-form'>
+	<span class='heading'>Update Profile</span>
+	<input type='text' name='name' placeholder='Updated Name' value='<%= profile_user.name %>' title='Enter your updated name!' required>
+	<input type='email' name='email' placeholder="Updated Email" value="<%= profile_user.email %>" title='Enter your updated E-Mail Id!' required>
+	<input type='submit' value='Update' title='Click here to update profile!'>
+	</div>
+</form>
+</div>

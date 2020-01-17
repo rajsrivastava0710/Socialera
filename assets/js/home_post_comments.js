@@ -6,11 +6,10 @@ class PostComments{
 		this.newCommentForm = $(`#post-${postId}-comments-form`);
 
 		this.createComment(postId);
-        console.log(this.postId);
-        console.log('***');
+
         let self = this;
         // call for all the existing comments
-        $(' .delete-comment-button', this.postContainer).each(function(){
+        $(' .delete-comment-button', self.postContainer).each(function(){
             self.deleteComment($(this));
         });
 	}

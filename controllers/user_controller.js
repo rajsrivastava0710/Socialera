@@ -9,13 +9,27 @@ module.exports.profile = function(req,res){
 	});	
 }
 
+module.exports.modify = function(req,res){
+	User.findById(req.params.id,function(err,user){
+		return res.render('updateUser',{
+			title:'UpdateProfilePage',
+			profile_user: user
+		});
+	});	
+}
+
 module.exports.update = function(req,res){
 	if(req.user.id == req.params.id){
 	User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-		if(err){console.log('error in updation',err);}
-		return res.redirect('back');	
+		if(err){
+			console.log('error in updation',err);
+			req.flash('error','Oops! Some error occured..')
+		}
+		req.flash('success','User Profile Updated Successfully !');
+		return res.redirect(`/users/profile/${req.params.id}`);	
 	});
 	}else{
+		req.flash('success','Mr. Hacker , You are unauthorised to perform such stuffs !')
 		return res.status(401).send('Unauthorised');
 	}
 }

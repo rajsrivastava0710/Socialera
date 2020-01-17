@@ -1,10 +1,15 @@
-<h1>Signup Page</h1>
+<link rel="stylesheet" type="text/css" href="/css/signup.css">
+<div id ='signup'>
 <div>
 <form action='/users/create' method='post'>
-<input type='text' name='name' placeholder='Enter ur name' required>
-<input type='email' name='email' placeholder='ur email id' required>
-<input type='password' name='password' placeholder='Enter ur password' required>
-<input type='password' name='confirm_password' placeholder='Confirm ur password' required>
-<input type='submit' value='SignUp'>
+<div id='new-form'>
+<span class='auth-heading'>SignUp</span>
+<input type='text' name='name' placeholder='Name' title='Enter your name' required>
+<input type='email' name='email' placeholder='E-Mail ID' title='Enter your E-Mail ID' required>
+<input type='password' name='password' placeholder='Password' title='Enter your Password' required>
+<input type='password' name='confirm_password' placeholder='Confirm Password' title='Confirm your Password' required>
+<input type='submit' title='Click here to SignUp !' value='SignUp'>
+</div>
 </form>
+</div>
 </div>

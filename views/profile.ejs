@@ -1,17 +1,12 @@
 <link rel="stylesheet" type="text/css" href="/css/user_profile.css">
 <!-- <div><h1 class='top-margin'>My FB // My Profile</h1></div> -->
-<div class='auth-heading'>My Profile</div>
-<div class='top-margin'>
-<div><strong>User</strong> : <%= profile_user.name %></div>
+<!-- <div class='auth-heading'>My Profile</div> -->
+<div class='top-padding center'>
+<div><strong>Username</strong> : <%= profile_user.name %></div>
 <div><strong>E-mail</strong> : <%= profile_user.email %></div>
 
 <% if(user.id == profile_user.id){ %>
-<h4>Update Profile</h4>
-	<form action="/users/update/<%= profile_user.id %>" method='post'>
-		<input type='text' name='name' placeholder='Your name' value='<%= profile_user.name %>' required>
-		<input type='email' name='email' placeholder="Your Email" value="<%= profile_user.email %>" required>
-		<input type='submit' value='Update'>
-	</form>
+	<div><button><a href = '/users/profile/update/<%= profile_user.id %>'>Update Profile</a></button></div>
 <% } %>
 
 </div>
