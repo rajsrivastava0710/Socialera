@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 //connect to the database
-mongoose.connect('mongodb://localhost/CNFB_db',{useNewUrlParser:true , useUnifiedTopology:true , useCreateIndex:true});
+mongoose.connect('mongodb://localhost/CNFB_db',{useNewUrlParser:true , useUnifiedTopology:true , useCreateIndex:true, useFindAndModify:false});
 
 //acquire the connection(to check if it's successful)
 const db = mongoose.connection;

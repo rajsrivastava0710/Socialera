@@ -1,5 +1,5 @@
 body form {
-  padding-top: 4rem; }
+  padding: 2.2rem 0; }
   body form big {
     color: red;
     font-size: 3rem; }
@@ -13,7 +13,7 @@ body form {
     text-align: center;
     padding-bottom: 1rem; }
   body form #new-form {
-    box-shadow: 0 0 20px 1px #b4c831c2;
+    box-shadow: 0 0 20px 2px #b4c831c2;
     background: linear-gradient(-45deg, #aeaae8, #e0e9a7d1);
     padding: .4rem 1rem .8rem 1rem;
     display: flex;
@@ -31,11 +31,19 @@ body form {
       outline: none;
       font-size: 1.4rem;
       margin: .6rem;
-      padding: .5rem; }
+      padding: .5rem;
+      width: 85%; }
+    body form #new-form input[type='file'] {
+      width: 85%;
+      font-size: 1rem;
+      background: space;
+      font-family: monospace;
+      font-weight: 600; }
     body form #new-form input[type='submit'] {
       border-radius: 10px;
       border: 2px solid #871b1b;
       color: #2612de;
       font-family: cursive;
       background: #64d987;
-      box-shadow: 0 0 15px 3px #039be587; }
+      box-shadow: 0 0 15px 3px #039be587;
+      width: 7rem; }

@@ -7,11 +7,30 @@ body {
 			color:green;
 			margin: 0.5rem 0 1rem 0;
 		}*/ }
-    body div.top-padding {
-      padding: 1rem 1rem; }
+    body div.container {
+      padding: 1rem 1rem;
+      display: flex;
+      flex-direction: row; }
     body div.center {
       text-align: center; }
-    body div button {
+    body div.pic-container {
+      width: 30%; }
+      body div.pic-container img {
+        width: 16rem;
+        border: 2px solid grey;
+        box-shadow: 0 0 10px #ad7363;
+        margin: .2rem .2rem; }
+    body div.detail-container {
+      width: 70%;
+      display: flex;
+      flex-direction: column; }
+    body div button#update {
       font-size: 1.4rem;
       border: 2px solid blueviolet;
       background: #35b1e4; }
+    body div button#delete {
+      font-size: 1.4rem;
+      border: 2px solid #367536;
+      background: #f13434; }
+      body div button#delete a {
+        color: black; }

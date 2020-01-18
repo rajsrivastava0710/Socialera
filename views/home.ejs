@@ -40,11 +40,25 @@
 	<% for(u of all_users){ %>
 		<% if(!locals.user){ %>
 		<p>
+			<!-- <% if(! u.avatar){ %>
+			<img src='/uploads/users/default-avatar/avatar.jpg' width='20'>
+			<% }else{ %>
+			<img src = '<%= u.avatar %>' width='20'>
+			<% } %> -->
+			<img src = '<%= u.avatar %>'>
+
 			<a href='/users/profile/<%= u.id %>'><%= u.name.split(" ")[0] %></a>
 		</p>
 		<% }else{ %>
 		<% if(locals.user.id != u.id){ %>
-		<p>
+		<p>			
+			<!-- <% if(! u.avatar){ %>
+			<img src='/uploads/users/default-avatar/avatar.jpg' width='20'>
+			<% }else{ %>
+			<img src = '<%= u.avatar %>' width='20'>
+			<% } %> -->
+			<img src = '<%= u.avatar %>'>
+
 			<a href='/users/profile/<%= u.id %>'><%= u.name.split(" ")[0] %></a>
 		</p>
 		<% } %>

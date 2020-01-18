@@ -14,7 +14,8 @@ header {
       padding: .3rem .8rem; }
       header .default-flex ._15per #app-name {
         color: blue;
-        font-size: 3rem; }
+        font-size: 3rem;
+        margin-left: .3rem; }
     header .default-flex ._85per {
       width: 85%; }
       header .default-flex ._85per #nav-user {

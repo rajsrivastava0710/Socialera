@@ -16,6 +16,8 @@ router.get('/profile/update/:id',passport.checkAuthentication,userController.mod
 
 router.post('/update/:id', passport.checkAuthentication ,userController.update);
 
+router.get('/delete/:id', passport.checkAuthentication ,userController.deleteUser);
+
 router.get('/login',userController.login);
 
 router.get('/signup',userController.signup);

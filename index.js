@@ -25,6 +25,9 @@ app.use(sassMiddleware({
 
 app.use(express.static('./assets'));
 
+// make the uploads path available to the browser for (file-upload)
+app.use('/uploads', express.static('./uploads'));
+
 app.use(cookieParser());
 
 //Body-Parser
