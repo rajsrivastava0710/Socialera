@@ -36,9 +36,9 @@ body #login {
       font-family: cursive;
       background: #53a7ce;
       box-shadow: 0 0 15px 3px #d5c436; }
-    body #login #new-form span {
+    body #login #new-form span.forgot-pass {
       position: relative;
       bottom: 10px; }
-      body #login #new-form span a {
+      body #login #new-form span.forgot-pass a {
         font-size: 1.3rem;
         color: black; }

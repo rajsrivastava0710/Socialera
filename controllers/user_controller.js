@@ -42,6 +42,12 @@ module.exports.update = async function(req, res){
                 user.email = req.body.email;
                
                 if (req.file){//if user is uploading a file
+
+                	if(req.file.mimetype.split('/')[0] != 'image' || req.file.size >1024*200 ){
+                		req.flash('error','The seclected file is inappropriate..');
+                		return res.redirect('back');
+                	}
+
                 	let AVATAR_PATH = path.join(__dirname,'..',user.avatar);
                 	let DEFAULT_AVATAR_PATH = path.join(__dirname,'../uploads/users/default-avatar/avatar.jpg');
                     if ( AVATAR_PATH != DEFAULT_AVATAR_PATH ){ //if(it had other than default avatar)

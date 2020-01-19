@@ -24,3 +24,5 @@ passport.use(new JWTStrategy(opts, function(jwtPayload, done) {
         }
     });
 }));
+
+module.exports = passport;

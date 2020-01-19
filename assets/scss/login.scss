@@ -42,11 +42,13 @@ body{
 			    box-shadow: 0 0 15px 3px #d5c436;
 			}
 			span{
+				&.forgot-pass{
 				position:relative;
 				bottom:10px;
 				a{
 					font-size:1.3rem;
 					color:black;
+				}
 				}
 			}
 		}
