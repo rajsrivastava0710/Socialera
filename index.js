@@ -8,6 +8,7 @@ const db = require("./config/mongoose");
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportJWT = require('./config/passport-jwt-strategy');
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
@@ -48,7 +49,7 @@ app.set('views', path.join(__dirname, 'views'));
 //mongostore to store session cookie in db
 app.use(session({
 	name:'cookie_1',
-	secret:'some-encryptionb ',
+	secret:'raj-encryption',
 	saveUninitialized:false,
 	resave:false,
 	cookie:{

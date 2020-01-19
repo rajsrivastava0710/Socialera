@@ -20,7 +20,6 @@ const userSchema = new mongoose.Schema({
 	},
 	avatar:{
 		type:String,
-        // default:path.join(__dirname,'..',AVATAR_PATH,'..','/avatar.jpg')
         default:path.join(AVATAR_PATH,'../default-avatar/avatar.jpg')
 	}
 },{

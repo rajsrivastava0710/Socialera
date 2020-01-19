@@ -9,22 +9,22 @@ header {
     header .default-flex .reverse-flex {
       display: flex;
       justify-content: flex-end; }
-    header .default-flex ._15per {
-      width: 15%;
+    header .default-flex ._20per {
+      width: 20%;
       padding: .3rem .8rem; }
-      header .default-flex ._15per #app-name {
+      header .default-flex ._20per #app-name {
         color: blue;
         font-size: 3rem;
         margin-left: .3rem; }
-    header .default-flex ._85per {
-      width: 85%; }
-      header .default-flex ._85per #nav-user {
+    header .default-flex ._80per {
+      width: 80%; }
+      header .default-flex ._80per #nav-user {
         background-color: #254cd4;
         font-weight: 600;
         font-family: sans-serif; }
-      header .default-flex ._85per div a {
+      header .default-flex ._80per div a {
         color: white; }
-      header .default-flex ._85per .small-margin {
+      header .default-flex ._80per .small-margin {
         padding: 1rem 1rem 1rem 1rem; }
-        header .default-flex ._85per .small-margin .black-font {
+        header .default-flex ._80per .small-margin .black-font {
           color: black; }
