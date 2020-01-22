@@ -6,17 +6,19 @@
 	
 	<span class='heading'>Update Profile</span>
 
+	<span class='placeholder'>Enter your Updated Name</span>
 	<input type='text' name='name' placeholder='Updated Name' value='<%= profile_user.name %>' title='Enter your updated name!' required>
 	
+	<span class='placeholder'>Enter your Updated E-Mail</span>
 	<input type='email' name='email' placeholder="Updated Email" value="<%= profile_user.email %>" title='Enter your updated E-Mail Id!' required>
 	
+	<span class='placeholder'>Select your Updated Profile Picture</span>
 	<input type='file' name='avatar' placeholder='Profile Picture' title='Select a new file to update your Profile Picture'>
-	<span class='warning'>Max Size:200KB</span>
+	<span class='warning'>Max Size:500KB</span>
 	
 	<input type='submit' value='Update' title='Click here to update profile!'>
 	
 	</div>
 
 </form>
-
-</div>
+<script type="text/javascript" src='/js/update_user.js'></script>

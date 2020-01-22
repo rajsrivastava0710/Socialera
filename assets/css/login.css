@@ -20,6 +20,13 @@ body #login {
     margin: 0 auto;
     align-items: center;
     border: 2px solid #020261; }
+    body #login #new-form .warning {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: -0.6rem;
+      color: #4a49e2;
+      font-weight: 600;
+      font-family: monospace; }
     body #login #new-form input {
       font-family: serif;
       border-radius: .9rem;

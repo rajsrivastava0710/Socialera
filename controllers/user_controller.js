@@ -8,7 +8,7 @@ module.exports.profile = function(req,res){
 	
 		User.findById(req.params.id,function(err,user){
 		return res.render('profile',{
-			title:'ProfilePage',
+			title:'Socialera/Profile',
 			profile_user: user
 			});
 		});	
@@ -18,7 +18,7 @@ module.exports.modify = function(req,res){
 	if(req.params.id == req.user.id){
 	User.findById(req.params.id,function(err,user){
 		return res.render('updateUser',{
-			title:'UpdateProfilePage',
+			title:'Socialera/Profile/Update',
 			profile_user: user
 		});
 	});	
@@ -43,7 +43,7 @@ module.exports.update = async function(req, res){
                
                 if (req.file){//if user is uploading a file
 
-                	if(req.file.mimetype.split('/')[0] != 'image' || req.file.size >1024*200 ){
+                	if(req.file.mimetype.split('/')[0] != 'image' || req.file.size >1024*500 ){
                 		req.flash('error','The seclected file is inappropriate..');
                 		return res.redirect('back');
                 	}
@@ -125,7 +125,7 @@ module.exports.login = function(req,res){
 		return res.redirect(`/users/profile/${req.user.id}`);
 	}
 	return res.render('login',{
-		title:'LoginPage'
+		title:'Socialera/Login'
 	});
 }
 module.exports.signup = function(req,res){
@@ -133,7 +133,7 @@ module.exports.signup = function(req,res){
 		return res.redirect(`/users/profile/${req.user.id}`);
 	}
 	return res.render('signup',{
-		title:'SignUpPage'
+		title:'Socialera/SignUp'
 	});
 }
 

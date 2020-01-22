@@ -35,4 +35,8 @@ router.get('/auth/google',passport.authenticate('google',{scope:['profile','emai
 
 router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/users/login'}),userController.createSession);
 
+router.get('/auth/facebook',passport.authenticate('facebook',{scope:['profile','email']}));
+
+router.get('/auth/facebook/callback',passport.authenticate('facebook',{failureRedirect:'/users/login'}),userController.createSession);
+
 module.exports = router;

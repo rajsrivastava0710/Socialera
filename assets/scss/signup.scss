@@ -23,6 +23,24 @@ body{
 			align-items: center;
 			border:2px solid #020261;
 			  
+			.warning{
+				text-align: center;
+			    font-size: 1.2rem;
+			    margin-bottom: -0.6rem;
+			    color: #d62425;
+			    font-weight: 600;
+			    font-family: monospace;
+			}
+
+			.placeholder{
+				text-align: center;
+			    font-size: 1.4rem;
+			    margin-bottom: -0.6rem;
+			    color:#4a49e2;
+			    font-weight: 600;
+			    font-family: monospace;
+			}
+
 			input{
 				font-family: serif;
 				border-radius: .9rem;

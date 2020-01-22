@@ -1,34 +1,85 @@
+
 body{
 	background-color:#f6f6fb8f;
 	div{
 		&.container{
-		padding:1rem 1rem;
+		padding:1rem 0;
 		display:flex;
 		flex-direction:row;
+		justify-content: center;
 		}
 		&.center{
 			text-align: center;
 		}
 		&.pic-container{
-			width: 30%;
+			width: 25%;
+			/*margin-left: -2.5rem;*/
+			padding:.1rem 1.4rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			img{
-			    width: 16rem;
+			    width: 100%;
 			    border: 2px solid grey;
 			    box-shadow: 0 0 10px #ad7363;
 			    margin: .2rem .2rem;
+			    object-fit: cover;
+			    height: 20rem
+			}
+			div{
+				color: #3c37d3;
+    			font-size: 2.5rem;
+    			font-weight: 600;
 			}
 		}
 		&.detail-container{
-			width: 70%;
+			width: 75%;
 			display: flex;
 			flex-direction: column;
+			#confirm{
+					display: flex;
+					flex-direction: column;
+					width: 19rem;
+				    margin-top: 1rem;
+				    padding: 5px;
+				    background: #d1d4da;
+				    border-radius: 10px;
+				    box-shadow: rgb(98, 125, 125) 0px 0px 5px 4px;
+				    span{
+				    	display: flex;
+				    	justify-content: space-between;
+				    	&#decision{
+				    		margin:.2rem 0;
+				    		strong{
+				    			color: #e82222;
+				    		}
+				    		button{
+				    			outline: none;
+				    		}
+				    		#yes{
+				    			border-radius: 10px;
+				    			border:2px solid #dc1818;
+				    			a{
+				    				color:#dc1818;
+				    			}
+				    		}
+				    		#no{
+				    			border-radius: 10px;
+				    			border:2px solid #4747dced;
+				    			color: #4747dced;
+				    		}
+				    	}
+				    	button{
+						font-size: 1.5rem;
+						}
+						&#warning{
+							font-size:1.2rem;
+							text-align: justify;
+						}
+				    }
+					
+				}
 		}
-		/*&.auth-heading{
-			font-size:3rem;
-			font-weight: 600;
-			color:green;
-			margin: 0.5rem 0 1rem 0;
-		}*/
 		button{
 		&#update{
 			font-size: 1.4rem;
@@ -45,4 +96,28 @@ body{
 		}
 		}
 	}
+}
+
+@media screen and (max-width: 830px){
+  body{
+  	div{
+  		&.container{
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
+    	}
+    	&.pic-container{
+    		img{
+    			width: 200px;
+    			height: 250px;
+    		}
+    	}
+    	&.detail-container{
+    		font-size:1.5rem;
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
+    	}
+    }
+ }
 }

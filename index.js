@@ -10,6 +10,9 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy.js');
+
+const passportFacebook = require('./config/passport-facebook-strategy.js');
+
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');

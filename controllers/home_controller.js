@@ -22,7 +22,7 @@ module.exports.home = async function(req,res){
 		
 		// console.log(posts);
 		return res.render('home',{
-			title:'fakebook:Home',
+			title:'Socialera:Home',
 			posts: posts,
 			all_users: users
 		});	

@@ -45,6 +45,16 @@ body{
 		    font-weight: 600;
 		}
 		span{
+			&.placeholder{
+				text-align: center;
+			    font-size: 1.4rem;
+			    padding-bottom: .45rem;
+			    margin-bottom: -0.6rem;
+			    color:#4a49e2;
+			    /*color:#d62425;*/
+			    font-weight: 600;
+			    font-family: monospace;
+			}
 			&.warning{
 			    position: relative;
 			    bottom: 1.5rem;
