@@ -1,8 +1,13 @@
 const User = require("../models/user");
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+const Reset = require("../models/reset_password");
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const newUserMailer = require('../mailers/new_user_mailer');
+const resetPasswordMailer = require('../mailers/reset_password_mailer');
+const deleteUserMailer = require('../mailers/delete_user_mailer');
 
 module.exports.profile = function(req,res){
 	
@@ -80,6 +85,7 @@ module.exports.deleteUser = async function(req,res){
 	try{
 		
 		let user = await User.findById(req.params.id);
+		let user_ = user;
 		let AVATAR_PATH = path.join(__dirname,'..',user.avatar);
         let DEFAULT_AVATAR_PATH = path.join(__dirname,'../uploads/users/default-avatar/avatar.jpg');
 		if (AVATAR_PATH != DEFAULT_AVATAR_PATH){  //if it had other than default avatar
@@ -105,6 +111,7 @@ module.exports.deleteUser = async function(req,res){
 
 		await User.findByIdAndDelete(req.params.id);
 
+		deleteUserMailer.deleteUser(user_);
 
 		req.flash("success","Your Profile has been deleted successfully !");
 		return res.redirect('/');
@@ -150,13 +157,21 @@ module.exports.create = function(req,res){
 			return res.redirect('back');
 		}
 		if(!user){
+
 			User.create(req.body,function(err,user){
 				if(err){
 					console.log("Error in creating user in signup"); 
 					req.flash('error','Oops ! Some error occured..');
 					return res.redirect('back');
 				}
+				user.activationKey = crypto.randomBytes(10).toString('hex');
+				user.save();
+					//Nodemailer
+				newUserMailer.newUser(user);
+
 				req.flash('success','User Signup Successful !');
+				console.log(user);
+				req.flash('long','We are sending account activation link to your E-Mail Id');		
 				return res.redirect('/users/login');
 			})
 		}else{
@@ -176,4 +191,84 @@ module.exports.removeSession = function(req,res){
 	req.logout();
 	req.flash('success','Logged out successfully..');
 	return res.redirect('/');
+}
+
+module.exports.confirmAccount = async function(req,res){
+	try{
+	let user = await User.findOne({activationKey:req.params.id});
+	if(user.isValid){
+	return res.send('We have already authenticated you!');
+	}
+	user.isValid=true;
+	user.activationKey = crypto.randomBytes(10).toString('hex');
+	user.save();//just for future safety purpose -maybe
+	req.flash('long','You have been authenticated successfully ! You can login now..')
+	return res.redirect('/users/login');
+
+	}catch(err){
+		res.send('Error ! This token has expired now');
+		console.log(err);
+		return;
+	}
+}
+
+module.exports.resetPassword = async function(req,res){
+	try{
+		let reset = await Reset.findOne({token:req.params.id});
+		if(req.body.password == req.body.confirm_password){
+		if(reset){
+		reset = await reset.populate('user').execPopulate();
+
+		if (reset.isValid) {
+			let user = await User.findById(reset.user);
+			user.password = req.body.password;
+			user.save();
+			// await reset.remove();
+			reset.isValid = false;
+			reset.save();
+			req.flash('success','Password Reset done successfully !');
+			return res.redirect('/users/login');
+		}else{
+			return res.send('This token has now expired');
+		}
+		
+		}else{
+			return res.send('This token does not exist');
+		}
+		}else{
+			if(reset){
+				reset.isValid = false;
+				reset.save();
+			}
+			return res.send('Passwords do not match !');
+		}
+	}catch(err){
+		console.log('Reset Password Error',err);
+		return ;
+	}
+}
+
+
+module.exports.resetToken = async function(req,res){
+	try{
+		let user = await User.findOne({email:req.body.email});
+		if(user){
+		await Reset.create({
+			token:crypto.randomBytes(10).toString('hex'),
+			user:user.id,
+			isValid:true
+		})
+		let reset = await Reset.findOne({user:user.id});
+		reset = await reset.populate('user').execPopulate();
+		resetPasswordMailer.resetLink(reset);
+		req.flash('long','We have sent the password reset link to this E-Mail Id !')
+		return res.redirect('back');
+		}else{
+			req.flash('error','This E-Mail Id does not exist in our database');
+			return res.redirect('back');
+		}
+	}catch(err){
+		console.log('Reset Token Error',err);
+		return ;
+	}
 }

@@ -22,7 +22,7 @@ module.exports.create = async function(req,res){
 			console.log(comment);
 
 			// for nodemailer
-			// commentsMailer.newComment(comment);
+			commentsMailer.newComment(comment);
 
 			if (req.xhr){
 			// Similar for comments to fetch the user's id!

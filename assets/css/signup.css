@@ -26,7 +26,8 @@ body #signup {
       margin-bottom: -0.6rem;
       color: #d62425;
       font-weight: 600;
-      font-family: monospace; }
+      font-family: monospace;
+      padding-bottom: 1rem; }
     body #signup #new-form .placeholder {
       text-align: center;
       font-size: 1.4rem;

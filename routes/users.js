@@ -20,6 +20,8 @@ router.get('/delete/:id', passport.checkAuthentication ,userController.deleteUse
 
 router.get('/login',userController.login);
 
+// router.get('/login/reset_pass',userController.resetTokenValues);
+
 router.get('/signup',userController.signup);
 
 router.post('/create',userController.create);
@@ -30,6 +32,12 @@ router.post('/create-session',
 	,userController.createSession);
 
 router.get('/remove-session',userController.removeSession);
+
+router.get('/confirm_account/:id',userController.confirmAccount);
+
+router.post('/reset_password',userController.resetToken);
+
+router.post('/reset_password/:id',userController.resetPassword);
 
 router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
 

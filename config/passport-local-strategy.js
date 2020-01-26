@@ -19,6 +19,11 @@ passport.use(new LocalStrategy({
 				return done(null,false);
 				//no error and no authentication proved
 			}
+			else if(!user || user.isValid == false){
+				req.flash('error','Your account is not yet verified! Verify it to login :)');
+				return done(null,false);
+				//no error and no authentication proved
+			}
 			return done(null,user);
 			//no error and auth proved
 		});

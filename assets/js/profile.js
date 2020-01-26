@@ -3,9 +3,7 @@
 	let no_ = $('#no');
 	let confirm_ = $('#confirm');
 
-	confirm_.css({
-		display:"none"
-	});
+	confirm_.hide();
 	delete_.on('click',function(e){
 		e.preventDefault();
 		confirm_.fadeIn(1000);

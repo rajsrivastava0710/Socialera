@@ -13,6 +13,7 @@ header{
 			justify-content: flex-end;
 		}
 		._20per{
+			align-self: center;
 			width: 19rem;
 			padding: .3rem .8rem;
 			#app-name{
@@ -32,8 +33,21 @@ header{
     		font-family: sans-serif;
 			}
 			div{
+				align-self: center;
+				text-align: center;
 				a{
 					color: white;
+					img{
+					    position: relative;
+					    top: 8px;
+					    left: 5px;
+					    width: 35px;
+					    height: 35px;
+					    border-radius: 50%;
+					    border: 1px solid #3b3b75db;
+					    object-fit: cover;
+					    box-shadow: 0 0 4px 1px #c73821;
+					}
 				}
 			}
 			.small-margin{

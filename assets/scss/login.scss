@@ -55,10 +55,48 @@ body{
 				bottom:10px;
 				a{
 					font-size:1.3rem;
-					color:black;
+					color: #225647;
 				}
 				}
 			}
+			#forget-mail{
+				margin-top: -.1rem;
+			    width: 50%;
+			    height: 1rem;
+			    font-size: 1rem;
+			    border: 2px solid grey;
+			    border-radius: .5rem;
+			}
+		}
+		form{
+			&.hide{
+				box-shadow: 0 0 20px 2px #af74a3;
+				background: linear-gradient(45deg, #ca8c8c, #bdc56c00);
+				padding:.4rem 1rem .8rem 1rem;
+				display:flex;
+				flex-direction:column;
+				width: 30%;
+				min-width: 19rem;
+				margin: 0 auto;
+				align-items: center;
+				border:2px solid #020261;
+				border-top: 0;
+				input{
+				margin:.6rem;
+				padding:.5rem;
+				box-shadow: 0 0 5px 1px #d6aeb6;
+				font-size: 1rem;
+			    font-family: sans-serif;
+			    text-align: center;
+			    width: 55%;
+			    border: 2px solid #566e84;
+			    outline: none;
+			    border-radius: .5rem;
+			    font-weight: 600;
+			    color: #2e34c7;
+			}
+			}
+			
 		}
 	}
 }

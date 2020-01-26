@@ -24,7 +24,8 @@ callbackURL:"http://localhost:8000/users/auth/facebook/callback"
 			User.create({
 				name: profile.displayName,
 				email: profile.emails[0].value,
-				password: crypto.randomBytes(20).toString('hex')
+				password: crypto.randomBytes(20).toString('hex'),
+				isValid:true
 			},function(err,user){
 				if(err){
 				console.log(`Error in creating user : passport facebook ${err}`);

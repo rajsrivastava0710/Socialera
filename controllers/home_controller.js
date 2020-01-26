@@ -19,6 +19,9 @@ module.exports.home = async function(req,res){
 		});
 
 		let users = await User.find({});
+
+		//when i added isValid field in between , then i set isValid field of existing users to true
+		// await User.updateMany({},{isValid:true}); //upsert an multi
 		
 		// console.log(posts);
 		return res.render('home',{
@@ -29,7 +32,7 @@ module.exports.home = async function(req,res){
 	
 	}catch(err){
 		console.log(`Error in loading posts/users:${err}`);
-		return;
+		return ;
 	}
 	
 }

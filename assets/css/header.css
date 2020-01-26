@@ -11,6 +11,7 @@ header {
       display: flex;
       justify-content: flex-end; }
     header .default-flex ._20per {
+      align-self: center;
       width: 19rem;
       padding: .3rem .8rem; }
       header .default-flex ._20per #app-name {
@@ -24,8 +25,21 @@ header {
         background-color: #5f7ff1;
         font-weight: 600;
         font-family: sans-serif; }
-      header .default-flex ._80per div a {
-        color: white; }
+      header .default-flex ._80per div {
+        align-self: center;
+        text-align: center; }
+        header .default-flex ._80per div a {
+          color: white; }
+          header .default-flex ._80per div a img {
+            position: relative;
+            top: 8px;
+            left: 5px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid #3b3b75db;
+            object-fit: cover;
+            box-shadow: 0 0 4px 1px #c73821; }
       header .default-flex ._80per .small-margin {
         padding: 1rem 1rem 1rem 1rem; }
         header .default-flex ._80per .small-margin .black-font {

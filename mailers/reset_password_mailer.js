@@ -1,12 +1,11 @@
 const nodeMailer = require('../config/nodemailer');
 //new way to export like module.exports = 
-exports.newComment = (comment) => {
-	let htmlString = nodeMailer.renderTemplate({comment:comment},'/comments/new_comment.ejs');
+exports.resetLink = (reset) => {
+	let htmlString = nodeMailer.renderTemplate({reset:reset},'/users/reset_password.ejs');
 	nodeMailer.transporter.sendMail({
 		from: 'rajsriv.14@gmail.com',
-		to: comment.user.email,
-		// subject: `You commented : ${comment.content}`,
-		subject:'New Comment',
+		to: reset.user.email,
+		subject:'Socialera Password Reset !',
 		html: htmlString
 	},(err,info) => {
 		if(err){
@@ -17,5 +16,3 @@ exports.newComment = (comment) => {
 		return;
 	});
 }
-
-

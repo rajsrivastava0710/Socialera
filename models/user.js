@@ -21,6 +21,13 @@ const userSchema = new mongoose.Schema({
 	avatar:{
 		type:String,
         default:path.join(AVATAR_PATH,'../default-avatar/avatar.jpg')
+	},
+	isValid:{
+		type:Boolean,
+		default:false,
+	},
+	activationKey:{
+		type:String
 	}
 },{
 	// time for created at and updated at 
