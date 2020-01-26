@@ -49,19 +49,21 @@ module.exports.update = async function(req, res){
                 if (req.file){//if user is uploading a file
 
                 	if(req.file.mimetype.split('/')[0] != 'image' || req.file.size >1024*500 ){
-                		req.flash('error','The seclected file is inappropriate..');
+                		req.flash('error','The selected file is inappropriate..');
                 		return res.redirect('back');
                 	}
 
                 	let AVATAR_PATH = path.join(__dirname,'..',user.avatar);
-                	let DEFAULT_AVATAR_PATH = path.join(__dirname,'../uploads/users/default-avatar/avatar.jpg');
-                    if ( AVATAR_PATH != DEFAULT_AVATAR_PATH ){ //if(it had other than default avatar)
+                	// let DEFAULT_AVATAR_PATH = path.join(__dirname,'../uploads/users/default-avatar/avatar.jpg');
+
+                    if ( ! user.defaultPic ){ //if(it had other than default avatar)
                     	if(fs.existsSync(AVATAR_PATH)){ //if(that file exist in avatars folder)
                         	fs.unlinkSync(AVATAR_PATH); //delete old file
                     	}
                     }
                     // this is saving the path of the uploaded file into the avatar field in the user
                     user.avatar = User.avatarPath + '/' + req.file.filename;
+                    user.defaultPic = false;
                 }
                 user.save();
                 console.log(req.file);
@@ -86,9 +88,11 @@ module.exports.deleteUser = async function(req,res){
 		
 		let user = await User.findById(req.params.id);
 		let user_ = user;
+
 		let AVATAR_PATH = path.join(__dirname,'..',user.avatar);
-        let DEFAULT_AVATAR_PATH = path.join(__dirname,'../uploads/users/default-avatar/avatar.jpg');
-		if (AVATAR_PATH != DEFAULT_AVATAR_PATH){  //if it had other than default avatar
+  		// let DEFAULT_AVATAR_PATH = path.join(__dirname,'../uploads/users/default-avatar/avatar.jpg');
+
+		if ( ! user.defaultPic){  //if it had other than default avatar
         	if(fs.existsSync(AVATAR_PATH)){ //if(that file exist in avatars folder)
             	fs.unlinkSync(AVATAR_PATH); //delete old file
         	}
@@ -108,6 +112,8 @@ module.exports.deleteUser = async function(req,res){
 
         }
         await Comment.deleteMany({user:req.params.id});
+        //delete reset password token
+        await Reset.findOneAndDelete({user:user.id});
 
 		await User.findByIdAndDelete(req.params.id);
 
@@ -206,40 +212,62 @@ module.exports.confirmAccount = async function(req,res){
 	return res.redirect('/users/login');
 
 	}catch(err){
-		res.send('Error ! This token has expired now');
+		return res.status(403).json({
+			message:'This token has expired now!'
+		})
 		console.log(err);
 		return;
 	}
+}
+
+module.exports.resetPasswordPage = function(req,res){
+	let reset = Reset.find({token:req.params.id});
+	if(reset.isValid == true){
+		return res.render('resetPassword',{
+		resetToken : req.params.id,
+		title:'Socialera/Reset Password'
+	});
+	}else{
+		return res.status(403).json({
+			message:'Your token has expired'
+		})
+	}
+	
 }
 
 module.exports.resetPassword = async function(req,res){
 	try{
 		let reset = await Reset.findOne({token:req.params.id});
 		if(req.body.password == req.body.confirm_password){
-		if(reset){
-		reset = await reset.populate('user').execPopulate();
-
-		if (reset.isValid) {
-			let user = await User.findById(reset.user);
-			user.password = req.body.password;
-			user.save();
-			// await reset.remove();
-			reset.isValid = false;
-			reset.save();
-			req.flash('success','Password Reset done successfully !');
-			return res.redirect('/users/login');
-		}else{
-			return res.send('This token has now expired');
-		}
-		
-		}else{
-			return res.send('This token does not exist');
-		}
-		}else{
 			if(reset){
-				reset.isValid = false;
-				reset.save();
+				reset = await reset.populate('user').execPopulate();
+
+				if (reset.isValid) {
+					let user = await User.findById(reset.user);
+					user.password = req.body.password;
+					user.save();
+					// await reset.remove();
+					reset.isValid = false;
+					reset.save();
+					req.flash('success','Password Reset done successfully !')
+					return res.redirect('/users/login');
+				
+				}else{
+					return res.status(403).json({
+					message:'Your token has expired.Generate a new token again'
+					})
+				}
+			
+			}else{
+				return res.status(403).json({
+					message:'Your token does not exist'
+				})
 			}
+		}else{
+			// if(reset){
+			// 	reset.isValid = false;
+			// 	reset.save();
+			// }
 			return res.send('Passwords do not match !');
 		}
 	}catch(err){
@@ -253,16 +281,24 @@ module.exports.resetToken = async function(req,res){
 	try{
 		let user = await User.findOne({email:req.body.email});
 		if(user){
-		await Reset.create({
-			token:crypto.randomBytes(10).toString('hex'),
-			user:user.id,
-			isValid:true
-		})
-		let reset = await Reset.findOne({user:user.id});
-		reset = await reset.populate('user').execPopulate();
-		resetPasswordMailer.resetLink(reset);
-		req.flash('long','We have sent the password reset link to this E-Mail Id !')
-		return res.redirect('back');
+			let reset = await Reset.findOne({user:user.id});
+			
+			if(!reset){
+				await Reset.create({
+				token:crypto.randomBytes(10).toString('hex'),
+				user:user.id,
+				isValid:true
+			});
+				reset = await Reset.findOne({user:user.id});
+			}
+			reset.isValid = true;
+			reset.save();
+			
+			
+			reset = await reset.populate('user').execPopulate();
+			resetPasswordMailer.resetLink(reset);
+			req.flash('long','We have sent the password reset link to this E-Mail Id !')
+			return res.redirect('back');
 		}else{
 			req.flash('error','This E-Mail Id does not exist in our database');
 			return res.redirect('back');

@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
 		type:String,
         default:path.join(AVATAR_PATH,'../default-avatar/avatar.jpg')
 	},
+	defaultPic:{
+		type:Boolean,
+		default:true
+	},
 	isValid:{
 		type:Boolean,
 		default:false,

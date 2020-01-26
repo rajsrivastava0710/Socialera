@@ -33,11 +33,18 @@ router.post('/create-session',
 
 router.get('/remove-session',userController.removeSession);
 
+
+
 router.get('/confirm_account/:id',userController.confirmAccount);
+
+
 
 router.post('/reset_password',userController.resetToken);
 
-router.post('/reset_password/:id',userController.resetPassword);
+router.get('/reset_password/token/:id/',userController.resetPasswordPage);
+
+router.post('/reset_password/:id/',userController.resetPassword);
+
 
 router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
 

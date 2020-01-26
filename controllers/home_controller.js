@@ -2,6 +2,8 @@ const User = require('../models/user')
 
 const Post = require('../models/post')
 
+const path = require('path');
+
 module.exports.home = async function(req,res){  
 	try{
 		let posts = await Post.find({})
@@ -19,7 +21,6 @@ module.exports.home = async function(req,res){
 		});
 
 		let users = await User.find({});
-
 		//when i added isValid field in between , then i set isValid field of existing users to true
 		// await User.updateMany({},{isValid:true}); //upsert an multi
 		
