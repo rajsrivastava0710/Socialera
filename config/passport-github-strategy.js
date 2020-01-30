@@ -1,19 +1,19 @@
 const passport = require('passport');
-const facebookStrategy = require('passport-facebook').Strategy;
+const githubStrategy = require('passport-github').Strategy;
 
 const crypto = require('crypto');
 const User = require('../models/user');
 
 
-passport.use(new facebookStrategy({
-clientID:"xxx",
+passport.use(new githubStrategy({
+clientID:"xxxxx",
 clientSecret:"xxx",
-callbackURL:"http://localhost:8000/users/auth/facebook/callback"
+callbackURL:"http://localhost:8000/users/auth/github/callback"
 
 },function(accessToken , refreshToken , profile , done){
 	User.findOne({email:profile.emails[0].value}).exec(function(err,user){
 		if(err){
-			console.log(`Error in passport google ${err}`);
+			console.log(`Error in passport github ${err}`);
 			return;
 		}
 		console.log(profile);
@@ -28,7 +28,7 @@ callbackURL:"http://localhost:8000/users/auth/facebook/callback"
 				isValid:true
 			},function(err,user){
 				if(err){
-				console.log(`Error in creating user : passport facebook ${err}`);
+				console.log(`Error in creating user : passport github ${err}`);
 				return;
 				}
 				return done(null,user);

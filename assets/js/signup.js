@@ -9,12 +9,12 @@ let input = $('#new-form input');
 for(let i=0;i<input.length-1;i++){
 	if(i==3){ continue; }
 	input.eq(i).on('focus',function(){
-		placeholder.eq(i).slideDown(1000);
+		placeholder.eq(i).slideDown(500);
 	});
 }
 
 password.on('focus',function(e){
-	warning.slideDown(1000);
+	warning.slideDown(600);
 });
 password.on('change',function(e){
 	if($(this).val().length<5){
@@ -28,9 +28,9 @@ password.on('change',function(e){
 				timeout: 3000,
 		}).show();
 	}else{
-	confirm_pass.fadeIn(1000);
-	warning.fadeOut(1000,function(){
-		placeholder.eq(3).fadeIn(1000);
+	confirm_pass.fadeIn(400);
+	warning.fadeOut(400,function(){
+		placeholder.eq(3).fadeIn(400);
 	});
 	}
 });

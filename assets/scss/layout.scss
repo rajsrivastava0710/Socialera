@@ -1,6 +1,7 @@
 $medium : 2rem;
 
 body{
+	position:relative;
 	/*font-size:$medium;*/
 	background-color:#f6f6fb8f;
 	margin:0 0;
@@ -10,5 +11,8 @@ body{
 		font-size: $medium; 
 		padding: 0;
 		min-height:72vh;
+
+		/*Fixing the nav at top , so pushing main content behing when at top of nav --temporarily*/
+	    z-index: -1;
 	}
 }

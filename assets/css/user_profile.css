@@ -13,14 +13,19 @@ body {
     padding: .1rem 1.4rem;
     display: flex;
     flex-direction: column;
-    align-items: center; }
+    align-items: center;
+    text-align: center; }
     body div.pic-container img {
       width: 100%;
       border: 2px solid grey;
       box-shadow: 0 0 10px #ad7363;
       margin: .2rem .2rem;
       object-fit: cover;
-      height: 20rem; }
+      height: 20rem;
+      transition: transform .5s; }
+    body div.pic-container img:hover {
+      /*transform: rotate(90deg);*/
+      transform: scale(1.02); }
     body div.pic-container div {
       color: #3c37d3;
       font-size: 2.5rem;
@@ -55,7 +60,8 @@ body {
           body div.detail-container #confirm span#decision #no {
             border-radius: 10px;
             border: 2px solid #4747dced;
-            color: #4747dced; }
+            color: #4747dced;
+            cursor: pointer; }
         body div.detail-container #confirm span button {
           font-size: 1.5rem; }
         body div.detail-container #confirm span#warning {
@@ -77,11 +83,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; }
-  body div.pic-container img {
-    width: 200px;
-    height: 250px; }
+  body div.pic-container {
+    width: 100%; }
+    body div.pic-container img {
+      width: 200px;
+      height: 250px; }
   body div.detail-container {
     font-size: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center; } }
+    align-items: center;
+    width: 100%; } }

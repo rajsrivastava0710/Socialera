@@ -10,8 +10,9 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy.js');
+const passportGithub = require('./config/passport-github-strategy.js');
 
-const passportFacebook = require('./config/passport-facebook-strategy.js');
+// const passportFacebook = require('./config/passport-facebook-strategy.js');
 
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
@@ -79,6 +80,9 @@ app.use(passport.setAuthenticatedUser);
 
 // connect-flash used after session is used
 app.use(flash());
+
+//Using moments library
+app.locals.moment = require('moment');
 
 app.use(custoMware.setFlash);
 

@@ -4,6 +4,9 @@ const Post = require('../models/post')
 
 const path = require('path');
 
+// <%= moment(Date.now()).diff(moment(post.createdAt),'minutes'); %>
+// To get minutes from creation of post till present:
+
 module.exports.home = async function(req,res){  
 	try{
 		let posts = await Post.find({})

@@ -6,8 +6,8 @@ const newUserMailer = require('../mailers/new_user_mailer');
 
 
 passport.use(new googleStrategy({
-clientID:"1062128411018-28svnet4lk4c3un619klibvv0t2pg3nt.apps.googleusercontent.com",
-clientSecret:"IesopoFyMrldK2JpEf8LnZkw",
+clientID:"xxxx",
+clientSecret:"xxx",
 callbackURL:"http://localhost:8000/users/auth/google/callback"
 
 },function(accessToken , refreshToken , profile , done){
@@ -24,7 +24,7 @@ callbackURL:"http://localhost:8000/users/auth/google/callback"
 			User.create({
 				name: profile.displayName,
 				email: profile.emails[0].value,
-				password: crypto.randomBytes(20).toString('hex'),
+				password: crypto.randomBytes(8).toString('hex'),
 				isValid:true
 			},function(err,user){
 				if(err){

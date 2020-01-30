@@ -26,6 +26,9 @@ body{
 		    margin: 0 auto;
 		    align-items: center;
 		    border: 2px solid #020261;
+		    input:focus{
+		    	box-shadow: 0 0 10px 0.1em #2c6079;
+		    }
 		input{
 			font-family: serif;
 			border-radius: .9rem;
@@ -36,6 +39,7 @@ body{
 			margin:.6rem;
 			padding:.5rem;
 			width: 85%;
+			transition: box-shadow 0.35s ease-in-out 0s;
 		}
 		input[type='file']{
 			width: 85%;

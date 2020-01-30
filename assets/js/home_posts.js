@@ -49,6 +49,7 @@
 			${ post.content }
 			<br>
 			Author:<small>${ post.user.name }</small>
+            <br>
 		</p>
 
 		<div class='post-comment'>

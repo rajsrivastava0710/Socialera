@@ -10,6 +10,8 @@
 			<%= post.content %>
 			<br>
 			Author:<small><%= post.user.name %></small>
+			<br>
+			<%= moment(post.createdAt)./*format("MMMM Do YYYY, h:mm a").*/format('lll'); %>
 		</p>
 
 		<div class='post-comment'>

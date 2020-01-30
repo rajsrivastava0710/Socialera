@@ -18,13 +18,19 @@ body{
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			text-align:center;
 			img{
 			    width: 100%;
 			    border: 2px solid grey;
 			    box-shadow: 0 0 10px #ad7363;
 			    margin: .2rem .2rem;
 			    object-fit: cover;
-			    height: 20rem
+			    height: 20rem;
+			    transition: transform .5s;
+			}
+			img:hover{
+				/*transform: rotate(90deg);*/
+				transform: scale(1.02);
 			}
 			div{
 				color: #3c37d3;
@@ -67,6 +73,7 @@ body{
 				    			border-radius: 10px;
 				    			border:2px solid #4747dced;
 				    			color: #4747dced;
+				    			cursor: pointer;
 				    		}
 				    	}
 				    	button{
@@ -107,6 +114,7 @@ body{
     		align-items: center;
     	}
     	&.pic-container{
+    		width:100%;
     		img{
     			width: 200px;
     			height: 250px;
@@ -117,6 +125,7 @@ body{
     		display: flex;
     		flex-direction: column;
     		align-items: center;
+    		width:100%;
     	}
     }
  }

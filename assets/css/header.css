@@ -1,5 +1,8 @@
 header {
   /*color:blue;*/
+  z-index: 100;
+  position: sticky;
+  top: 0;
   font-size: 2rem; }
   header .nav-bar {
     /*background-color: #328be494;*/

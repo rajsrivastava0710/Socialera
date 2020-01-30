@@ -117,7 +117,11 @@ module.exports.deleteUser = async function(req,res){
 
 		await User.findByIdAndDelete(req.params.id);
 
-		deleteUserMailer.deleteUser(user_);
+		//Nodemailer Mail
+
+		// deleteUserMailer.deleteUser(user_);
+
+		//
 
 		req.flash("success","Your Profile has been deleted successfully !");
 		return res.redirect('/');
@@ -138,7 +142,7 @@ module.exports.login = function(req,res){
 		return res.redirect(`/users/profile/${req.user.id}`);
 	}
 	return res.render('login',{
-		title:'Socialera/Login'
+		title:'Login'
 	});
 }
 module.exports.signup = function(req,res){
@@ -146,7 +150,7 @@ module.exports.signup = function(req,res){
 		return res.redirect(`/users/profile/${req.user.id}`);
 	}
 	return res.render('signup',{
-		title:'Socialera/SignUp'
+		title:'SignUp'
 	});
 }
 
@@ -172,8 +176,10 @@ module.exports.create = function(req,res){
 				}
 				user.activationKey = crypto.randomBytes(10).toString('hex');
 				user.save();
-					//Nodemailer
-				newUserMailer.newUser(user);
+				
+				//Nodemailer Mail
+				// newUserMailer.newUser(user);
+				//
 
 				req.flash('success','User Signup Successful !');
 				console.log(user);
@@ -296,7 +302,11 @@ module.exports.resetToken = async function(req,res){
 			
 			
 			reset = await reset.populate('user').execPopulate();
-			resetPasswordMailer.resetLink(reset);
+
+			//Nodemailer Mail
+			// resetPasswordMailer.resetLink(reset);
+			//
+			
 			req.flash('long','We have sent the password reset link to this E-Mail Id !')
 			return res.redirect('back');
 		}else{

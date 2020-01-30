@@ -27,6 +27,8 @@ body #login {
       color: #4a49e2;
       font-weight: 600;
       font-family: monospace; }
+    body #login #new-form input:focus {
+      box-shadow: 0 0 10px 0.1em #76b0cc; }
     body #login #new-form input {
       font-family: serif;
       border-radius: .9rem;
@@ -35,7 +37,8 @@ body #login {
       outline: none;
       font-size: 1.4rem;
       margin: .6rem;
-      padding: .5rem; }
+      padding: .5rem;
+      transition: box-shadow 0.35s ease-in-out; }
     body #login #new-form input[type='submit'] {
       border-radius: 10px;
       border: 2px solid #871b1b;
