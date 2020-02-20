@@ -60,6 +60,8 @@ class PostComments{
 						<small>
 							${ comment.user.name }
 						</small>
+                        <br>
+                        <small>Just now</small>
 					</p>
 				</li>`);
     }

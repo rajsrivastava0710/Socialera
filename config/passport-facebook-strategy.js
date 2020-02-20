@@ -6,9 +6,9 @@ const User = require('../models/user');
 
 
 passport.use(new facebookStrategy({
-clientID:"xxx",
-clientSecret:"xxx",
-callbackURL:"http://localhost:8000/users/auth/facebook/callback"
+clientID: env.fb_client_id,
+clientSecret: env.fb_client_secret,
+callbackURL: env.fb_callback_url
 
 },function(accessToken , refreshToken , profile , done){
 	User.findOne({email:profile.emails[0].value}).exec(function(err,user){

@@ -6,9 +6,11 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;//importing module to extr
 
 const User = require('../models/user');
 
+const env = require('./environment');
+
 var opts = {
 	jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken(),
-	secretOrKey : 'raj'
+	secretOrKey : env.jwt_secret
 }
 
 passport.use(new JWTStrategy(opts, function(jwtPayload, done) {

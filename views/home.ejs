@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/home.css">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/home.css') %>">
 
 <!-- <div class='main-head'>
 	My FB // Homepage
@@ -17,7 +17,7 @@
 	<% } %>
 	
 	<div id='post-container'>
-		<ul>
+		<ul id='post-ul'>
 			<% for(post of posts){ %>
 
 			 <%- include('_post'); %>
@@ -68,6 +68,6 @@
 </div>
 
 <!-- this script must be above because we are calling the class present in 1st script in the 2nd script -->
-<script type="text/javascript" src="/js/home_post_comments.js"></script>
-<script type="text/javascript" src='/js/home_posts.js'></script>
+<script defer type="text/javascript" src="<%= assetPath('js/home_post_comments.js') %>"></script>
+<script defer type="text/javascript" src="<%= assetPath('js/home_posts.js') %>"></script>
 

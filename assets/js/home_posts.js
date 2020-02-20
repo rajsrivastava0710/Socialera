@@ -50,6 +50,7 @@
 			<br>
 			Author:<small>${ post.user.name }</small>
             <br>
+            <small>Just now</small>
 		</p>
 
 		<div class='post-comment'>

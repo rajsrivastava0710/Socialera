@@ -57,8 +57,48 @@ section{
 	}
 	#post-container{
 		ul{
-			/*list-style: none*/
+			padding: 0;
+			list-style: none;
+			&#post-ul{
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
+			&#post-ul>li{
+				div{
+					&.post-comment-list{
+						small{
+							&.cmnt-date{
+								font-size: 1rem;
+								float: right;
+								margin-right: 1rem;
+							}
+						}
+					}
+				}	
+				box-sizing: border-box;
+				border:2px solid black;
+				margin-bottom: 2rem;
+				padding-bottom: 2rem;
+				padding-left: 2rem;
+				div{
+					&.like-pallet{
+						width: 100%;
+						border-top:2px solid black;
+						border-bottom: 2px solid black;
+						margin-top: 1.5rem;
+					}
+				}
+				span{
+					&.post-date{
+						float:right;
+						margin-right: 1rem;
+						font-size: 1rem;
+					}
+				}
+			}
+
 		}
+
 	}
 	#new-post-form{
 		margin-left: 1rem;

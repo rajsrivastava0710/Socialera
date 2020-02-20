@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/login.css">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/login.css') %>">
 <div id ='login'>
 <div>
 <form action='/users/create-session' method='post'>
@@ -21,4 +21,4 @@
 </form>
 </div>
 </div>
-<script type="text/javascript" src='/js/login.js'></script>
+<script defer type="text/javascript" src="<%= assetPath('js/login.js') %>"></script>

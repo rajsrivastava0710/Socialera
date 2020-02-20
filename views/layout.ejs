@@ -3,17 +3,17 @@
 <head>
 	<title><%= title %></title>
 	
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js'></script>
-
-	<script type="text/javascript" src='/js/jquery.js'></script>
+	<script type="text/javascript" src="<%= assetPath('js/loader.js') %>"></script>
+	<script defer type="text/javascript" src="<%= assetPath('js/jquery.js') %>"></script>
 	<!-- Use jquery cdn -->
-
-	<link rel="stylesheet" type="text/css" href="/css/layout.css">
-	<link rel="stylesheet" type="text/css" href="/css/header.css">
-	<link rel="stylesheet" type="text/css" href="/css/footer.css">
+	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js'></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+	<link rel="stylesheet" type="text/css" href="<%= assetPath('css/layout.css') %>">
+	<link rel="stylesheet" type="text/css" href="<%= assetPath('css/header.css') %>">
+	<link rel="stylesheet" type="text/css" href="<%= assetPath('css/footer.css') %>">
 
 	<%- style %>
+	<%- script %>
 
 </head>
 <body>
@@ -24,9 +24,17 @@
 	<%- body %>
 	</main>
 	
-	<%- include('_footer'); %>
+	<div id='load-container'>
+		<div id='static'>Socialera</div>
+		<div id='name'>Socialera</div>
+		<div id='outer'>
+			<div id='loader' class='center'></div>
+		</div>
+	</div>
 
-	<%- script %>		
+
+	<%- include('_footer'); %>
+		
 
 	<script>
 

@@ -119,7 +119,7 @@ module.exports.deleteUser = async function(req,res){
 
 		//Nodemailer Mail
 
-		// deleteUserMailer.deleteUser(user_);
+		deleteUserMailer.deleteUser(user_);
 
 		//
 
@@ -226,8 +226,8 @@ module.exports.confirmAccount = async function(req,res){
 	}
 }
 
-module.exports.resetPasswordPage = function(req,res){
-	let reset = Reset.find({token:req.params.id});
+module.exports.resetPasswordPage = async function(req,res){
+	let reset = await Reset.find({token:req.params.id});
 	if(reset.isValid == true){
 		return res.render('resetPassword',{
 		resetToken : req.params.id,
@@ -304,7 +304,7 @@ module.exports.resetToken = async function(req,res){
 			reset = await reset.populate('user').execPopulate();
 
 			//Nodemailer Mail
-			// resetPasswordMailer.resetLink(reset);
+			resetPasswordMailer.resetLink(reset);
 			//
 			
 			req.flash('long','We have sent the password reset link to this E-Mail Id !')

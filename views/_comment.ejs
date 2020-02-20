@@ -7,5 +7,6 @@
 		<% } %>
 		<small><%= comment.content %> : </small>
 		<small><%= comment.user.name %></small>
+		<small class='cmnt-date'><%= moment(comment.createdAt).fromNow() %></small>
 	</p>
 </li>

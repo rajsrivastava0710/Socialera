@@ -1,9 +1,16 @@
-<link rel="stylesheet" type="text/css" href="/css/user_profile.css">
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/user_profile.css') %>">
 
 <div class = 'container'>
 
 <div class = 'pic-container'>
-	<img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width='200px'>
+	<div id='dp-container'>
+	<img id='dp' src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width='200px'>
+	</div>
+
+	<!-- <div id='load-container'>
+	<div id='load-animate'></div>
+	</div> -->
+	
 	<div><%= profile_user.name %></div>
 </div>
 <div class = 'detail-container'>
@@ -40,4 +47,4 @@
 <% } %> -->
 
 </div>
-<script type="text/javascript" src='/js/profile.js'></script>
+<script async type="text/javascript" src="<%= assetPath('js/profile.js') %>" ></script>
