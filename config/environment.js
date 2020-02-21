@@ -16,21 +16,21 @@ const accessLogStream = rfs.createStream('access.log', {
 
 const development = {
 	name:'development',
-	port:8000,
+	port:8080,
 	asset_path:'/assets',
 	upload_path:'/uploads',
 	session_cookie_key:'raj-encryption',
 	db:'CNFB_db',
-	gmail_id:'**@gmail.com',
-	gmail_password:'**',
-	google_client_id:"***",
-	google_client_secret:"***",
+	gmail_id:'rajsriv.14@gmail.com',
+	gmail_password:'rj071014@gmail',
+	google_client_id:"1062128411018-28svnet4lk4c3un619klibvv0t2pg3nt.apps.googleusercontent.com",
+	google_client_secret:"IesopoFyMrldK2JpEf8LnZkw",
 	google_callback_url:"http://localhost:8000/users/auth/google/callback",
-	github_client_id:"***",	
-	github_client_secret:"****",
+	github_client_id:"b050085d98a316c7e03c",	
+	github_client_secret:"51da03c721da3b61c66ae8a7226fe12105c575fd",
 	github_callback_url:"http://localhost:8000/users/auth/github/callback",
-	fb_client_id:"***",
-	fb_client_secret:"***",
+	fb_client_id:"457290965179896",
+	fb_client_secret:"dea3a92b86669e050f2f7891770e07a5",
 	fb_callback_url:"http://localhost:8000/users/auth/facebook/callback",
 	jwt_secret:'raj',
 	morgan:{
@@ -45,6 +45,7 @@ const development = {
 
 const production = {
 	name:'production',
+	port:8000,
 	asset_path: process.env.SOCIALERA_ASSET_PATH,
 	upload_path: process.env.SOCIALERA_UPLOAD_PATH,
 	session_cookie_key: process.env.SOCIALERA_SESSION_COOKIE_KEY,

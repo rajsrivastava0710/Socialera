@@ -3,10 +3,9 @@
 <head>
 	<title><%= title %></title>
 	
-	<script type="text/javascript" src="<%= assetPath('js/loader.js') %>"></script>
-	<script defer type="text/javascript" src="<%= assetPath('js/jquery.js') %>"></script>
+	<script async type="text/javascript" src="<%= assetPath('js/loader.js') %>"></script>
+	<script type="text/javascript" src="<%= assetPath('js/jquery.js') %>"></script>
 	<!-- Use jquery cdn -->
-	<script defer src='https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js'></script>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
 	<link rel="stylesheet" type="text/css" href="<%= assetPath('css/layout.css') %>">
 	<link rel="stylesheet" type="text/css" href="<%= assetPath('css/header.css') %>">
@@ -20,10 +19,6 @@
 
 	<%- include('_header.ejs'); %>
 
-	<main id='layout-body'>
-	<%- body %>
-	</main>
-	
 	<div id='load-container'>
 		<div id='static'>Socialera</div>
 		<div id='name'>Socialera</div>
@@ -31,10 +26,13 @@
 			<div id='loader' class='center'></div>
 		</div>
 	</div>
-
+	<main id='layout-body'>
+	<%- body %>
+	</main>
 
 	<%- include('_footer'); %>
 		
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js'></script>	
 
 	<script>
 

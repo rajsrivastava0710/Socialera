@@ -1,0 +1,12 @@
+[0mGET /favicon.ico [33m404 [0m130.409 ms - 150[0m
+[0mGET /api/v1/users [33m404 [0m135.164 ms - 151[0m
+[0mDELETE /api/v1/posts/delete/5e4ed949df481b2574f272b1 [33m401 [0m9.010 ms - -[0m
+[0mDELETE /api/v1/posts/delete/5e4ed949df481b2574f272b1 [33m401 [0m272.674 ms - -[0m
+[0mDELETE /api/v1/posts/delete/5e4ed949df481b2574f272b1 [33m401 [0m6.971 ms - -[0m
+[0mDELETE /api/v1/posts/delet/5e4ed949df481b2574f272b1 [33m404 [0m7.277 ms - 185[0m
+[0mDELETE /api/v1/posts/ [33m404 [0m9.511 ms - 155[0m
+[0mDELETE /api/v1/posts/delete/5e4ed949df481b2574f272b1 [33m401 [0m174.462 ms - -[0m
+[0mPOST /api/v1/users/create-session [33m422 [0m79.693 ms - 39[0m
+[0mDELETE /api/v1/posts/delet/5e4ed949df481b2574f272b1 [33m404 [0m7.157 ms - 185[0m
+[0mDELETE /api/v1/posts/delet/5e4ed949df481b2574f272b1 [33m404 [0m6.431 ms - 185[0m
+[0mGET /favicon.ico [33m404 [0m6.921 ms - 150[0m
