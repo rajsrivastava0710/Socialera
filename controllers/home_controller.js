@@ -14,14 +14,24 @@ module.exports.home = async function(req,res){
 		.populate({
 			path:'user'
 		})
+		.populate({
+			path:'likes'
+		})
 		//nested prepopulating
-		.populate(
-		{
+		.populate({
 			path: 'comments',
 			populate:{
 			path: 'user'
 			}
+		})
+		.populate({
+			path: 'comments',
+			populate:{
+			path: 'likes'
+			}
 		});
+
+		// let likedPosts = await Post.find({likes.user:req.user.id});
 
 		let users = await User.find({});
 		//when i added isValid field in between , then i set isValid field of existing users to true
@@ -31,6 +41,7 @@ module.exports.home = async function(req,res){
 		return res.render('home',{
 			title:'Socialera:Home',
 			posts: posts,
+			// likedPosts: likedPosts,
 			all_users: users
 		});	
 	

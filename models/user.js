@@ -32,7 +32,13 @@ const userSchema = new mongoose.Schema({
 	},
 	activationKey:{
 		type:String
-	}
+	},
+	friends:[
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref:'Friend'
+		}
+	]
 },{
 	// time for created at and updated at 
 	timestamps:true

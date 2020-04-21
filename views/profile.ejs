@@ -12,6 +12,43 @@
 	</div> -->
 	
 	<div><%= profile_user.name %></div>
+	<div>
+		Friends:
+		<ul id='friend-list'>
+		<% for(friend of profile_user.friends){ %>
+			<% if(friend.from_user.id == profile_user.id){ %>
+			<li><a href='/users/profile/<%= friend.to_user.id %>'><%= friend.to_user.name %></a></li>
+			<% }else{ %>
+			<li><a href='/users/profile/<%= friend.from_user.id %>'><%= friend.from_user.name %></a></li>
+			<% } %> 
+		<% } %>
+		</ul>
+	</div>
+	
+	<% if(profile_user.id != locals.user.id){ %> 
+
+	<% let isFriend = false %>
+	<% for(friendship of profile_user.friends){ %>
+		
+		<% if((friendship.from_user.id == locals.user.id 
+		&& friendship.to_user.id == profile_user.id)||(friendship.to_user.id == locals.user.id && friendship.from_user.id == profile_user.id)){ %>
+
+			<% isFriend=true; %>
+			<% break; %>
+		<% } %>
+	<% } %>
+
+	<% if(!isFriend){ %>
+	<button>
+	<div id='add-friend-<%= profile_user._id %>'><a class='toggle-friend' href='/users/profile/<%= profile_user.id %>/toggle-friend'>Add Friend +</a></div>
+	</button>
+	<% }else{ %>
+	<button>
+	<div id='add-friend-<%= profile_user._id %>'><a class='toggle-friend' href='/users/profile/<%= profile_user.id %>/toggle-friend'>Unfriend -</a></div>
+	</button>
+	<% } %>
+
+	<% } %>
 </div>
 <div class = 'detail-container'>
 <!-- <% if(profile_user.name){ %>
@@ -22,6 +59,8 @@
 <% } %> -->
 
 <div><strong>E-mail</strong> : <%= profile_user.email %></div>
+
+
 
 <% if(user.id == profile_user.id){ %>
 <div>
@@ -47,4 +86,19 @@
 <% } %> -->
 
 </div>
-<script async type="text/javascript" src="<%= assetPath('js/profile.js') %>" ></script>
+<script src="<%= assetPath('js/toggle_friend.js') %>"></script>
+<script type="text/javascript" src="<%= assetPath('js/profile.js') %>" ></script>
+
+<!-- for notification -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js'></script>
+<script type="text/javascript" src="<%= assetPath('js/notify_engine.js') %>"></script>
+<% if(locals.user.id != profile_user.id){ %>
+<script>
+	new notifyEngine('<%= profile_user.id %>','<%= locals.user.name %>');
+</script>
+<!-- end notification -->
+
+<script>
+    let toggleFriend = new ToggleFriend($('.toggle-friend'));
+</script>
+<% } %>

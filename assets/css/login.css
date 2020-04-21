@@ -48,7 +48,8 @@ body #login {
       box-shadow: 0 0 15px 3px #d5c436; }
     body #login #new-form span.forgot-pass {
       position: relative;
-      bottom: 10px; }
+      bottom: 10px;
+      cursor: pointer; }
       body #login #new-form span.forgot-pass a {
         font-size: 1.3rem;
         color: #225647; }

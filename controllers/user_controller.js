@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Post = require("../models/post");
 const Comment = require("../models/comment");
+const Friend = require('../models/friend');
 const Reset = require("../models/reset_password");
 const fs = require('fs');
 const path = require('path');
@@ -9,13 +10,25 @@ const newUserMailer = require('../mailers/new_user_mailer');
 const resetPasswordMailer = require('../mailers/reset_password_mailer');
 const deleteUserMailer = require('../mailers/delete_user_mailer');
 
-module.exports.profile = function(req,res){
+
+module.exports.profile = async function(req,res){
 	
-		User.findById(req.params.id,function(err,user){
+		let user = await User.findById(req.params.id)
+		.populate({
+			path: 'friends',
+			populate:{
+			path: 'from_user',
+			}
+		})
+		.populate({
+			path: 'friends',
+			populate:{
+			path: 'to_user',
+			}
+		});
 		return res.render('profile',{
 			title:'Socialera/Profile',
 			profile_user: user
-			});
 		});	
 }
 
@@ -46,14 +59,22 @@ module.exports.update = async function(req, res){
                 user.name = req.body.name;
                 user.email = req.body.email;
                
+               
                 if (req.file){//if user is uploading a file
+                		
+                	let AVATAR_PATH = path.join(__dirname,'..',user.avatar);
+                	let tempPath = User.avatarPath+'/'+req.file.filename;
+               		let INAPPROPRIATE_FILE_PATH = path.join(__dirname,'..',tempPath);
 
                 	if(req.file.mimetype.split('/')[0] != 'image' || req.file.size >1024*500 ){
+
+                		//deleting the image that got stored but did not qualify the above rule
+                		fs.unlinkSync(INAPPROPRIATE_FILE_PATH);
+
                 		req.flash('error','The selected file is inappropriate..');
                 		return res.redirect('back');
                 	}
 
-                	let AVATAR_PATH = path.join(__dirname,'..',user.avatar);
                 	// let DEFAULT_AVATAR_PATH = path.join(__dirname,'../uploads/users/default-avatar/avatar.jpg');
 
                     if ( ! user.defaultPic ){ //if(it had other than default avatar)
@@ -137,6 +158,59 @@ module.exports.deleteUser = async function(req,res){
 	
 }
 
+module.exports.addFriend = async function(req,res){
+	try{
+
+		if(req.params.id == req.user._id){
+			req.flash('error','You look to be suffering from multi-identity disorder!');
+			return res.redirect('back');
+		}
+		let addedFriend = false;
+		let exist_1 = await Friend.findOne({
+			from_user:req.user._id,
+			to_user:req.params.id
+		});
+		let exist_2 = await Friend.findOne({
+			to_user:req.user._id,
+			from_user:req.params.id
+		});
+
+		let user_1 = await User.findById(req.params.id);
+			
+		let user_2 = await User.findById(req.user._id);
+
+		if(!exist_1 && !exist_2){
+			let newFriend = await Friend.create({
+				from_user:req.user._id,
+				to_user:req.params.id
+			});
+			user_1.friends.push(newFriend.id);
+			user_2.friends.push(newFriend.id);
+			user_1.save();
+			user_2.save();
+			addedFriend = true;
+		}else{
+			let del_friend = exist_1 || exist_2;
+			del_friend.remove();
+			user_1.friends.pull(del_friend._id);
+			user_2.friends.pull(del_friend._id);
+			user_1.save();
+			user_2.save();
+		}
+
+		return res.status(200).json({
+			data:{
+				addedFriend : addedFriend
+			}
+		});
+		// return res.redirect('back');
+
+	}catch(err){
+		console.log('Error adding friend',err);
+		return;
+	}
+}
+
 module.exports.login = function(req,res){
 	if(req.isAuthenticated()){
 		return res.redirect(`/users/profile/${req.user.id}`);
@@ -178,7 +252,7 @@ module.exports.create = function(req,res){
 				user.save();
 				
 				//Nodemailer Mail
-				// newUserMailer.newUser(user);
+				newUserMailer.newUser(user);
 				//
 
 				req.flash('success','User Signup Successful !');

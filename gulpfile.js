@@ -81,7 +81,7 @@ gulp.task('images', function(done){
 // empty the public/assets directory
 gulp.task('clean:assets', function(done){
     del.sync('./public');
-    // del.sync('./rev-manifest.json');
+    del.sync('./rev-manifest.json');
     //this will delete the manifest every time gulp build runs ,so may solve your problem of manifest adding,deleting,etc.
     done();
 });

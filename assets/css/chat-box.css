@@ -1,0 +1,76 @@
+div#chatbox {
+  display: none;
+  background: cyan;
+  font-size: 1.3rem;
+  height: 48vh;
+  width: 21vw;
+  border: 2px solid red;
+  position: fixed;
+  /*top:50.4vh;*/
+  bottom: .5rem;
+  right: 0.5rem;
+  /*div{
+			&#chat-header{
+				span{
+					
+				}
+				text-align: center;
+				width:12%;
+				border-bottom: 1px solid black;
+				width: 100%;
+			}
+		}*/ }
+  div#chatbox ul {
+    margin: 0;
+    padding: .5rem;
+    /*padding-inline-start:0;*/ }
+    div#chatbox ul#chat-list-container {
+      height: 66%;
+      overflow-y: auto;
+      /*display: flex;
+				flex-direction: column;*/ }
+      div#chatbox ul#chat-list-container li {
+        margin-bottom: .5rem;
+        padding: .3rem;
+        list-style: none; }
+        div#chatbox ul#chat-list-container li.other-msg {
+          text-align: left;
+          padding: .25rem; }
+          div#chatbox ul#chat-list-container li.other-msg span {
+            background-color: green;
+            padding: .3rem; }
+        div#chatbox ul#chat-list-container li.self-msg {
+          text-align: right;
+          padding: .25rem; }
+          div#chatbox ul#chat-list-container li.self-msg span {
+            background-color: grey;
+            padding: .3rem; }
+        div#chatbox ul#chat-list-container li.notify {
+          text-align: center;
+          padding: .15rem;
+          font-size: 1.1rem;
+          font-style: italic;
+          font-family: monospace;
+          background: yellow; }
+          div#chatbox ul#chat-list-container li.notify span {
+            padding: .3rem; }
+  div#chatbox div#message-input-container {
+    border-top: 2px solid blue;
+    height: 22%;
+    /*position: fixed;*/
+    bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%; }
+    div#chatbox div#message-input-container div {
+      width: 100%;
+      text-align: center; }
+      div#chatbox div#message-input-container div input#msg-text {
+        color: red;
+        width: 90%; }
+      div#chatbox div#message-input-container div button#msg-send {
+        color: green;
+        border: none;
+        width: 90%;
+        background: blue; }

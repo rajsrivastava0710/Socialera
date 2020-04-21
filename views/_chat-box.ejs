@@ -1,0 +1,23 @@
+<% if(locals.user){ %>
+<link rel="stylesheet" type="text/css" href="<%= assetPath('css/chat-box.css') %>">
+<div id='chatbox'>
+	<!-- <div id='chat-header'>
+		<span>Header</span>
+	</div> -->
+	<ul id='chat-list-container'>
+		<li class='notify'>
+			<span class='typing'></span>
+		</li>
+		
+	</ul>
+	<div id='message-input-container'>
+		<div>
+		<input id='msg-text' type='text' placeholder="Type your message">
+		</div>
+		<div>
+		<button id='msg-send'>Send</button>
+		</div>
+	</div>
+</div>
+
+<% } %>

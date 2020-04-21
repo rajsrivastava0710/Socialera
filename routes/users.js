@@ -6,7 +6,6 @@ const userController = require("../controllers/user_controller");
 
 const router = express.Router();
 
-
 console.log("User Router loaded");
 
 //using middleware
@@ -17,6 +16,8 @@ router.get('/profile/update/:id',passport.checkAuthentication,userController.mod
 router.post('/update/:id', passport.checkAuthentication ,userController.update);
 
 router.get('/delete/:id', passport.checkAuthentication ,userController.deleteUser);
+
+router.get('/profile/:id/toggle-friend',passport.checkAuthentication,userController.addFriend);
 
 router.get('/login',userController.login);
 

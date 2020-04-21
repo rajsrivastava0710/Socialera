@@ -1,27 +1,71 @@
 	<li id='post-<%= post._id %>'>
 		
 		<p>
-			<div><a href='/users/profile/<%= post.user._id %>'><%= post.user.name %></a> posted on Socialera
-				<span class='post-date'><%= moment(post.createdAt)./*format("MMMM Do YYYY, h:mm a").*/format('lll'); %></span>
+			<div>
+				<a href='/users/profile/<%= post.user._id %>'><%= post.user.name %></a> posted on Socialera
+				<span class='post-date'>
+					<%= moment(post.createdAt)./*format("MMMM Do YYYY, h:mm a").*/format('lll'); %>
+				</span>
 			</div>
+			
 			<% if((locals.user) && (locals.user.id == post.user.id)){ %>
+			
 			<small>
 				<a class = 'delete-post-button' href='/posts/destroy/<%= post._id %>'>X</a>
 			</small>
+			
 			<% } %>
+
+			<% if(post.pic){ %>
+
+				<img src="<%= post.pic %>" width=200 height=200> 
+
+			<% } %>
+
 			<%= post.content %>
 			<!-- Author:<small><%= post.user.name %></small> -->
-			<div class='like-pallet'><a href='#'>Like</a></span></div>			
+			
+			<div class='like-pallet'>
+				
+				<% if (locals.user){ %>
+				<!-- does not look optimal to me -->
+				<% let liked = false; %>
+            	<% for(x of post.likes){ %>
+            		<% if(x.user == locals.user.id){ %>
+            			<a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post" style='color:red'>
+                        <%= post.likes.length %> Likes
+                		</a>
+                		<% liked=true; %>
+                		<% break; %>
+            		<% } %>
+            	<% } %>
+            	<% if(!liked){ %>
+                <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post" style='color:white'>
+                        <%= post.likes.length %> Likes
+                </a>
+                <% } %>
+	        
+	            <% }else{ %>
+	        		
+	                <a style='color:white'><%= post.likes.length %> Likes</a>
+	        
+	            <% } %>
+	            
+			</div>			
 		</p>
 
 		<div class='post-comment'>
 			
 			<% if(locals.user){ %>
+			
 			<form id="post-<%= post._id %>-comments-form" action="/comments/create" method="post">
+			
 				<input type="text" name="content" placeholder="Enter your comment here.." title='Type your comment here !' required>
 				<input type='hidden' name='post' value='<%= post._id %>'>
 				<input type='submit' value="Add Comment">
+			
 			</form>
+			
 			<% } %>
 
 		</div>
@@ -29,10 +73,15 @@
 		<div class='post-comment-list'>
 			<!-- <big>Comment:</big> -->
 			<ul id='post-comments-<%= post._id %>'>
+			
 			<% for(comment of post.comments){ %>
+			
 				<%- include('_comment'); %>
+			
 			<% } %>
+			
 			</ul>
+		
 		</div>
 
 	</li>

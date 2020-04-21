@@ -1,21 +1,25 @@
 <link rel="stylesheet" type="text/css" href="<%= assetPath('css/home.css') %>">
 
-<!-- <div class='main-head'>
-	My FB // Homepage
-</div> -->
 <div id='home-container'>
 <section id='feed-posts'>
 
 	<% if(locals.user){ %>
+	
 	<div class='main-sub-head'>Post Here:</div>
-	<form action="/posts/create" method="post" id='new-post-form'>
+	<form action="/posts/create" method="post" id='new-post-form' enctype="multipart/form-data">
+		<div>
 		<textarea name ='content' rows='7' cols='45' placeholder="Type your post here" required></textarea>
+		</div>
+		<div>
+		<label for='post-pic'>Upload a picture now</label>
+		<input id='post-pic' type='file' name='pic' placeholder='Upload a picture' title='Select a picture to upload'>
+		</div>
 		<div>
 			<input type='submit' value="Post">
 		</div>
 	</form>
 	<% } %>
-	
+
 	<div id='post-container'>
 		<ul id='post-ul'>
 			<% for(post of posts){ %>
@@ -65,9 +69,27 @@
 		<% } %>
 	<% } %>
 </section>
+	<!-- include chat-box file -->
+	<%- include('_chat-box.ejs'); %>
 </div>
 
 <!-- this script must be above because we are calling the class present in 1st script in the 2nd script -->
-<script defer type="text/javascript" src="<%= assetPath('js/home_post_comments.js') %>"></script>
-<script defer type="text/javascript" src="<%= assetPath('js/home_posts.js') %>"></script>
 
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
+<script type="text/javascript" src="<%= assetPath('js/home_post_comments.js') %>"></script>
+<script type="text/javascript" src="<%= assetPath('js/home_posts.js') %>"></script>
+
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js'></script>
+<script type="text/javascript" src="<%= assetPath('js/chat_engine.js') %>"></script>
+<% if(locals.user){ %>
+<script>
+	new chatEngine('chatbox','<%= locals.user.name %>');
+</script>
+<% } %>

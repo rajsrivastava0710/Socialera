@@ -11,6 +11,7 @@
                 url: '/posts/create',
                 data: newPostForm.serialize(),//convert form data into json
                 success: function(data){
+                    // console.log(data);
                 	$('#new-post-form textarea').val('');
                     let newPost = newPostDom(data.data.post);
                     $('#post-container>ul').prepend(newPost);
@@ -22,7 +23,10 @@
 
                         //call class PostComments
                     new PostComments(data.data.post._id);
-
+                        
+                        //call class togglelike
+                    new ToggleLike($(' .toggle-like-button', newPost));
+                    
                    	new Noty({
 						theme:'relax',
 						text: "New Post Created !",
@@ -40,37 +44,56 @@
 
 
     // method to create a post in DOM
+
     let newPostDom = function(post){
-    	return $(`<li id='post-${post._id}' style='margin-bottom: 2rem;border-bottom:2px solid red;padding-bottom: 2rem;'>		
-    	<p>
-			<small>
-				<a class = 'delete-post-button' href='/posts/destroy/${ post._id }'>X</a>
-			</small>
-			${ post.content }
-			<br>
-			Author:<small>${ post.user.name }</small>
-            <br>
-            <small>Just now</small>
-		</p>
+            return $(`<li id='post-${  post._id }'>
+        
+        <p>
+            <div>
+                <a href='/users/profile/${ post.user._id  }'>${ post.user.name  }</a> posted on Socialera
+                <span class='post-date'>
+                    Just Now
+                </span>
+            </div>
+                        
+            <small>
+                <a class = 'delete-post-button' href='/posts/destroy/${ post._id  }'>X</a>
+            </small>
+                
+               <img src='${post.pic}'/ alt='Picture'>
+            ${ post.content  }
+                        
+            <div class='like-pallet'>
+                
+                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${ post._id }&type=Post" style='color:white'>
+                        0 Likes
+                </a>        
+                
+            </div>          
+        </p>
 
-		<div class='post-comment'>
-		
-			<form id="post-${ post._id }-comments-form" action="/comments/create" method="post">
-				<input type="text" name="content" placeholder="Enter your comment here.." required>
-				<input type='hidden' name='post' value='${ post._id }'>
-				<input type='submit' value="Add Comment">
-			</form>
+        <div class='post-comment'>
+                        
+            <form id="post-${ post._id  }-comments-form" action="/comments/create" method="post">
+            
+                <input type="text" name="content" placeholder="Enter your comment here.." title='Type your comment here !' required>
+                <input type='hidden' name='post' value='${ post._id  }'>
+                <input type='submit' value="Add Comment">
+            
+            </form>
+        
+        </div>
 
-		</div>
+        <div class='post-comment-list'>
 
-		<div class='post-comment-list'>
-			<ul id='post-comments-${ post._id }'>
-			</ul>
-		</div>
+            <ul id='post-comments-${ post._id  }'>
+                        
+            </ul>
+        
+        </div>
 
-	</li>`)
+    </li>`)
     }
-
 
     // method to delete a post from DOM
     let deletePost = function(deleteLink){
@@ -81,7 +104,7 @@
                 type: 'get',
                 url: $(deleteLink).attr('href'),
                 success: function(data){
-                    $(`#post-${data.data.post_id}`).remove();
+                    $(`#post-${ data.data.post_id}`).remove();
                     new Noty({
 						theme:'relax',
 						text: "Post and associated comments deleted !",

@@ -1,0 +1,101 @@
+div{
+	&#chatbox{
+		display:none;
+		background: cyan;
+		font-size: 1.3rem;
+		height:48vh;
+		width:21vw;
+		border:2px solid red;
+		position: fixed;
+		/*top:50.4vh;*/
+		bottom:.5rem;
+		right:0.5rem;
+		
+		/*div{
+			&#chat-header{
+				span{
+					
+				}
+				text-align: center;
+				width:12%;
+				border-bottom: 1px solid black;
+				width: 100%;
+			}
+		}*/
+		ul{
+			margin:0;
+			padding: .5rem;
+			/*padding-inline-start:0;*/
+			&#chat-list-container{
+				height:66%;
+				overflow-y:auto;
+				/*display: flex;
+				flex-direction: column;*/
+				li{
+					margin-bottom:.5rem;
+					padding:.3rem;
+					list-style: none;
+					&.other-msg{
+						text-align: left;
+						padding:.25rem;
+						span{
+							background-color: green;
+							padding:.3rem;
+						}
+					}
+					&.self-msg{
+						text-align: right;
+						padding:.25rem;
+						span{
+							background-color: grey;
+							padding: .3rem;
+						}
+					}
+					&.notify{
+						text-align: center;
+						padding: .15rem;
+						font-size: 1.1rem;
+					    font-style: italic;
+					    font-family: monospace;
+					    background: yellow;
+					  	span{
+
+							padding: .3rem;
+						}
+					}
+				}
+			}
+		}
+		div{
+			&#message-input-container{
+				border-top: 2px solid blue;
+				height:22%;
+				/*position: fixed;*/
+    			bottom:4rem;
+    			display: flex;
+    			flex-direction: column;
+    			justify-content: center;
+    			width: 100%;
+    			div{
+    				width:100%;
+    				text-align: center;
+    				input{
+    				&#msg-text{
+    					color:red;
+    					width: 90%
+    				}
+    				}
+    			    button{
+    			    &#msg-send{
+    					color:green;
+    					border:none;
+    					width: 90%;
+    					background: blue
+    				} 
+    				}
+    			}
+    						
+			}
+		}
+	}
+}

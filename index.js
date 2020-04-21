@@ -23,6 +23,16 @@ const flash = require('connect-flash');
 const custoMware = require('./config/middleware');
 const port = env.port || 8000;
 
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_sockets.js').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log('Chat Server listening on port 5000');
+
+// const notifyServer = require('http').Server(app);
+// const notifySockets = require('./config/notify_sockets.js').notifySockets(notifyServer);
+// notifyServer.listen(3000);
+// console.log('Notification Server listening on port 3000');
+
 if(env.name=='development'){
 	app.use(sassMiddleware({
 	src:path.join(__dirname,env.asset_path,'/scss'),
