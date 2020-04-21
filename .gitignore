@@ -1,5 +1,5 @@
-production_logs
+production_logs/
 node_modules/
 public/
-uploads/users/avatars
+uploads/users/avatars/
 rev-manifest.json
