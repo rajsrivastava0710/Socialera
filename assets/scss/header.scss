@@ -1,5 +1,9 @@
+
 header{
 	/*color:blue;*/
+	display: flex;
+	flex-direction: column;
+	position: relative;
 	z-index: 100;
 	position: sticky;
 	top:0;
@@ -38,12 +42,28 @@ header{
 			div{
 				align-self: center;
 				text-align: center;
+				input[type='text']{
+					    height: 100%;
+					    font-size: 1.4rem;
+					    width: 13rem;
+					    box-sizing: border-box;
+					    padding: 4px;
+					    border: 2px solid #2c1776;
+					    outline: none;
+					    font-family: cursive;
+				}
+				button[type='submit']{
+					cursor: pointer;
+					width: 35px;
+				    border: 2px solid #2c1776;
+				    border-left: 0;
+				    background: bottom;
+				}
 				a{
 					color: white;
 					img{
 					    position: relative;
 					    top: 8px;
-					    left: 5px;
 					    width: 35px;
 					    height: 35px;
 					    border-radius: 50%;
@@ -55,11 +75,46 @@ header{
 			}
 			.small-margin{
 				padding:1rem 1rem 1rem 1rem;
-
+				display: flex;
 				.black-font{
 					color: black;
+					span{
+						display: none;
+					}
 				}
 			}
+		}
+	}
+	span{
+		&.hamburger-icon{
+			    position: absolute;
+			    padding: 0 10px 0 10px;
+			    align-self: flex-end;
+			    top: 7px;
+			    font-size: 3.1rem;
+			    box-sizing: content-box;
+			    cursor: pointer;
+			    display: none;
+
+			    i{
+			    	color: #545475;
+			    }
+		}
+	}
+}
+@media only screen and (max-width: 700px){
+	header{
+		.default-flex{
+			._80per{
+				/*div{*/
+				display: none;
+				/*}*/
+			}
+		}
+		span{
+		&.hamburger-icon{
+			display: block;
+		}
 		}
 	}
 }

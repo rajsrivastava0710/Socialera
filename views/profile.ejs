@@ -7,9 +7,6 @@
 	<img id='dp' src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width='200px'>
 	</div>
 
-	<!-- <div id='load-container'>
-	<div id='load-animate'></div>
-	</div> -->
 	
 	<div><%= profile_user.name %></div>
 	<div>
@@ -51,16 +48,8 @@
 	<% } %>
 </div>
 <div class = 'detail-container'>
-<!-- <% if(profile_user.name){ %>
-<div><strong>Name</strong> : <%= profile_user.name %></div>
-<% } %> 
-<% if(profile_user.email){ %>
-<div><strong>E-mail</strong> : <%= profile_user.email %></div>
-<% } %> -->
 
 <div><strong>E-mail</strong> : <%= profile_user.email %></div>
-
-
 
 <% if(user.id == profile_user.id){ %>
 <div>
@@ -79,15 +68,11 @@
 <% } %>
 
 </div>
-<!-- <% if(profile_user.avatar){ %>
-<img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width='200px'>
-<% }else{ %>
-<img src="/uploads/users/default-avatar/avatar.jpg" width='200'>
-<% } %> -->
 
 </div>
+<script type="text/javascript" async src="<%= assetPath('js/profile.js') %>" ></script>
+
 <script src="<%= assetPath('js/toggle_friend.js') %>"></script>
-<script type="text/javascript" src="<%= assetPath('js/profile.js') %>" ></script>
 
 <!-- for notification -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js'></script>

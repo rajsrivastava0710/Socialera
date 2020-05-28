@@ -4,8 +4,8 @@
 	let confirm_ = $('#confirm');
 	let dp = $('#dp');
 	let loader = $('#load-container');
-
 	confirm_.hide();
+	confirm_.css('visibility','visible')
 	delete_.on('click',function(e){
 		e.preventDefault();
 		confirm_.fadeIn(1000);

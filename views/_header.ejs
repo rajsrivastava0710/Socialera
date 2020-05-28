@@ -7,19 +7,18 @@
 	
 		<div class='_80per reverse-flex'>
 		<% if(locals.user){ %>
-		<% if(user.defaultPic) {%>
-			
-			<div id='nav-user' class='small-margin'>
-			<a class='black-font' href='/users/profile/<%= user._id %>'><%= user.name.split(" ")[0] %></a>
-			</div>
-			
-		<% }else{ %>
+		<div class='small-margin'>
+		<input type='text' placeholder='Search Here...'/>
+		<button type="submit"><i class="fa fa-search"></i></button>
+		</div>			
         
 		<div id='nav-user' class='small-margin'>
-			<a class='black-font' href='/users/profile/<%= user._id %>'><%= user.name.split(" ")[0] %><img src = '<%= locals.user.avatar %>'></a>
+			<a class='black-font' href='/users/profile/<%= user._id %>'>
+				<span><%= user.name.split(" ")[0] %></span>
+				<img src = '<%= locals.user.avatar %>'>
+			</a>
 		</div>
 
-		<% } %>
 
 		<div class='small-margin'>
 			<a href='/users/remove-session'>LogOut</a>
@@ -36,4 +35,7 @@
 		<% } %>
 		</div>
 	</div>
+	<span class='hamburger-icon'>
+	<i class="fa fa-align-justify"></i>
+	</span>
 </header>

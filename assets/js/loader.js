@@ -1,5 +1,5 @@
 document.onreadystatechange = function() {
-	if(document.readyState != 'complete'){
+	if(document.readyState != 'complete' && document.readyState != 'interactive'){
 		document.querySelector('body').setAttribute(
 			"style","visibility:hidden;height:100%;overflow:hidden;");
 		document.querySelector('#load-container').setAttribute(

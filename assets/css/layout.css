@@ -11,6 +11,55 @@ body {
     /*Fixing the nav at top , so pushing main content behing when at top of nav --temporarily*/
     z-index: -1; }
 
+div.collapsed-navbar {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 0;
+  position: fixed;
+  right: 0;
+  z-index: 10;
+  background: black;
+  transition: 1s width ease-in-out; }
+  div.collapsed-navbar div {
+    box-sizing: border-box;
+    /*margin-bottom: 10px;*/
+    font-size: 2rem;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    transition: .3s all ease-in-out; }
+    div.collapsed-navbar div#collapsed-searchbar {
+      display: flex;
+      padding: 0; }
+    div.collapsed-navbar div a {
+      font-weight: 600;
+      color: white; }
+    div.collapsed-navbar div input[type='text'] {
+      /*height: 100%;*/
+      font-size: 1.4rem;
+      width: 16rem;
+      box-sizing: border-box;
+      padding: 4px;
+      border: 2px solid #2c1776;
+      outline: none;
+      font-family: cursive; }
+    div.collapsed-navbar div button[type='submit'] {
+      cursor: pointer;
+      width: 35px;
+      border: 2px solid #2c1776;
+      border-left: 0;
+      outline: none;
+      /*background: bottom;*/ }
+  div.collapsed-navbar div:hover {
+    background: white; }
+    div.collapsed-navbar div:hover a {
+      color: black; }
+
+div.show {
+  /*display: flex;*/
+  width: 290px; }
+
 #load-container {
   position: absolute;
   top: 0;
@@ -107,4 +156,6 @@ body {
   #name {
     display: none; }
   #static {
-    display: block; } }
+    display: block; }
+  div.collapsed-navbar {
+    display: flex; } }

@@ -58,7 +58,7 @@ body {
     display: flex;
     flex-direction: column; }
     body div.detail-container #confirm {
-      /*visibility: hidden;*/
+      visibility: hidden;
       display: flex;
       flex-direction: column;
       width: 19rem;
@@ -96,6 +96,7 @@ body {
     border: 2px solid blueviolet;
     background: #35b1e4; }
   body div button#delete {
+    /*transition: 0.5s all ease-in-out;*/
     font-size: 1.4rem;
     border: 2px solid #367536;
     background: #f13434; }

@@ -1,5 +1,8 @@
 header {
   /*color:blue;*/
+  display: flex;
+  flex-direction: column;
+  position: relative;
   z-index: 100;
   position: sticky;
   top: 0;
@@ -31,12 +34,26 @@ header {
       header .default-flex ._80per div {
         align-self: center;
         text-align: center; }
+        header .default-flex ._80per div input[type='text'] {
+          height: 100%;
+          font-size: 1.4rem;
+          width: 13rem;
+          box-sizing: border-box;
+          padding: 4px;
+          border: 2px solid #2c1776;
+          outline: none;
+          font-family: cursive; }
+        header .default-flex ._80per div button[type='submit'] {
+          cursor: pointer;
+          width: 35px;
+          border: 2px solid #2c1776;
+          border-left: 0;
+          background: bottom; }
         header .default-flex ._80per div a {
           color: white; }
           header .default-flex ._80per div a img {
             position: relative;
             top: 8px;
-            left: 5px;
             width: 35px;
             height: 35px;
             border-radius: 50%;
@@ -44,6 +61,28 @@ header {
             object-fit: cover;
             box-shadow: 0 0 4px 1px #c73821; }
       header .default-flex ._80per .small-margin {
-        padding: 1rem 1rem 1rem 1rem; }
+        padding: 1rem 1rem 1rem 1rem;
+        display: flex; }
         header .default-flex ._80per .small-margin .black-font {
           color: black; }
+          header .default-flex ._80per .small-margin .black-font span {
+            display: none; }
+  header span.hamburger-icon {
+    position: absolute;
+    padding: 0 10px 0 10px;
+    align-self: flex-end;
+    top: 7px;
+    font-size: 3.1rem;
+    box-sizing: content-box;
+    cursor: pointer;
+    display: none; }
+    header span.hamburger-icon i {
+      color: #545475; }
+
+@media only screen and (max-width: 700px) {
+  header .default-flex ._80per {
+    /*div{*/
+    display: none;
+    /*}*/ }
+  header span.hamburger-icon {
+    display: block; } }

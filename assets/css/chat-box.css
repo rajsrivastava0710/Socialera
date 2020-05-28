@@ -1,9 +1,11 @@
 div#chatbox {
   display: none;
+  /*display: flex;*/
+  flex-direction: column;
   background: cyan;
   font-size: 1.3rem;
   height: 48vh;
-  width: 21vw;
+  width: 16rem;
   border: 2px solid red;
   position: fixed;
   /*top:50.4vh;*/
@@ -25,7 +27,10 @@ div#chatbox {
     padding: .5rem;
     /*padding-inline-start:0;*/ }
     div#chatbox ul#chat-list-container {
-      height: 66%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      height: 80%;
       overflow-y: auto;
       /*display: flex;
 				flex-direction: column;*/ }
@@ -34,29 +39,38 @@ div#chatbox {
         padding: .3rem;
         list-style: none; }
         div#chatbox ul#chat-list-container li.other-msg {
-          text-align: left;
-          padding: .25rem; }
+          width: 65%;
+          padding: .25rem;
+          align-self: flex-start; }
           div#chatbox ul#chat-list-container li.other-msg span {
             background-color: green;
-            padding: .3rem; }
+            padding: .3rem;
+            float: left;
+            word-break: break-word; }
         div#chatbox ul#chat-list-container li.self-msg {
-          text-align: right;
-          padding: .25rem; }
+          width: 65%;
+          padding: .25rem;
+          align-self: flex-end; }
           div#chatbox ul#chat-list-container li.self-msg span {
             background-color: grey;
-            padding: .3rem; }
+            padding: .3rem;
+            float: right;
+            word-break: break-word; }
         div#chatbox ul#chat-list-container li.notify {
+          position: sticky;
+          top: 0px;
           text-align: center;
           padding: .15rem;
           font-size: 1.1rem;
           font-style: italic;
           font-family: monospace;
-          background: yellow; }
+          background: yellow;
+          display: none; }
           div#chatbox ul#chat-list-container li.notify span {
             padding: .3rem; }
   div#chatbox div#message-input-container {
     border-top: 2px solid blue;
-    height: 22%;
+    height: 20%;
     /*position: fixed;*/
     bottom: 4rem;
     display: flex;

@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<%= assetPath('css/home.css') %>">
-
+<% if(locals.user){ %>
 <div id='home-container'>
 <section id='feed-posts'>
 
@@ -41,41 +41,33 @@
 	<big>Users</big>
 	<% } %>
 	</div>
-	<% for(u of all_users){ %>
-		<% if(!locals.user){ %>
+	<% if(curr_user.friends){ %>
+	<% for(u of curr_user.friends){ %>
 		<p>
-			<!-- <% if(! u.avatar){ %>
-			<img src='/uploads/users/default-avatar/avatar.jpg' width='20'>
+			<% if(u.from_user.id == locals.user.id){ %>
+			
+			<img src = '<%= u.to_user.avatar %>'>
+			<a href='/users/profile/<%= u.to_user.id %>'><%= u.to_user.name.split(" ")[0] %></a>
+		
 			<% }else{ %>
-			<img src = '<%= u.avatar %>' width='20'>
-			<% } %> -->
-			<img src = '<%= u.avatar %>'>
-
-			<a href='/users/profile/<%= u.id %>'><%= u.name.split(" ")[0] %></a>
-		</p>
-		<% }else{ %>
-		<% if(locals.user.id != u.id){ %>
-		<p>			
-			<!-- <% if(! u.avatar){ %>
-			<img src='/uploads/users/default-avatar/avatar.jpg' width='20'>
-			<% }else{ %>
-			<img src = '<%= u.avatar %>' width='20'>
-			<% } %> -->
-			<img src = '<%= u.avatar %>'>
-
-			<a href='/users/profile/<%= u.id %>'><%= u.name.split(" ")[0] %></a>
-		</p>
-		<% } %>
-		<% } %>
+			
+			<img src = '<%= u.from_user.avatar %>'>
+			<a href='/users/profile/<%= u.from_user.id %>'><%= u.from_user.name.split(" ")[0] %></a>
+			
+			<% } %>
+		</p>	
+	<% } %>
 	<% } %>
 </section>
 	<!-- include chat-box file -->
 	<%- include('_chat-box.ejs'); %>
 </div>
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js'></script>
+
 <!-- this script must be above because we are calling the class present in 1st script in the 2nd script -->
 
-<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
+<script type='text/javascript' src="<%= assetPath('js/toggle_likes.js') %>"></script>
 <script type="text/javascript" src="<%= assetPath('js/home_post_comments.js') %>"></script>
 <script type="text/javascript" src="<%= assetPath('js/home_posts.js') %>"></script>
 
@@ -86,10 +78,17 @@
     });
 </script>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js'></script>
 <script type="text/javascript" src="<%= assetPath('js/chat_engine.js') %>"></script>
 <% if(locals.user){ %>
 <script>
-	new chatEngine('chatbox','<%= locals.user.name %>');
+	new chatEngine('chatbox','<%= locals.user.name %>','<%= locals.user.email %>');
 </script>
+<% } %>
+
+
+<% }else{ %>
+
+<div id='welcome-text'>
+	Welcome to Socialera
+</div>
 <% } %>

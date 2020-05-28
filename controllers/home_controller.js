@@ -31,18 +31,24 @@ module.exports.home = async function(req,res){
 			}
 		});
 
-		// let likedPosts = await Post.find({likes.user:req.user.id});
-
-		let users = await User.find({});
+		// let users = await User.find({});
 		//when i added isValid field in between , then i set isValid field of existing users to true
 		// await User.updateMany({},{isValid:true}); //upsert an multi
-		
-		// console.log(posts);
+		let user = undefined;
+		if(req.user){
+			user = await User.findById(req.user.id)
+			.populate({
+				path:'friends',
+				populate:{
+					path:'from_user to_user'
+				}
+			});
+		}
+		console.log('Posts:',posts, '***' , 'USer' , user)
 		return res.render('home',{
 			title:'Socialera:Home',
 			posts: posts,
-			// likedPosts: likedPosts,
-			all_users: users
+			curr_user: user
 		});	
 	
 	}catch(err){

@@ -1,10 +1,12 @@
 div{
 	&#chatbox{
 		display:none;
+		/*display: flex;*/
+		flex-direction: column;
 		background: cyan;
 		font-size: 1.3rem;
 		height:48vh;
-		width:21vw;
+		width:16rem;
 		border:2px solid red;
 		position: fixed;
 		/*top:50.4vh;*/
@@ -27,7 +29,10 @@ div{
 			padding: .5rem;
 			/*padding-inline-start:0;*/
 			&#chat-list-container{
-				height:66%;
+				display: flex;
+    			flex-direction: column;
+				position: relative;
+				height:80%;
 				overflow-y:auto;
 				/*display: flex;
 				flex-direction: column;*/
@@ -36,28 +41,37 @@ div{
 					padding:.3rem;
 					list-style: none;
 					&.other-msg{
-						text-align: left;
+						width:65%;
 						padding:.25rem;
+						align-self: flex-start;
 						span{
 							background-color: green;
 							padding:.3rem;
+							float: left;
+							word-break: break-word;
 						}
 					}
 					&.self-msg{
-						text-align: right;
+						width:65%;
 						padding:.25rem;
+						align-self: flex-end;
 						span{
 							background-color: grey;
 							padding: .3rem;
+							float: right;
+							word-break: break-word;
 						}
 					}
 					&.notify{
+						position: sticky;
+						top: 0px;
 						text-align: center;
 						padding: .15rem;
 						font-size: 1.1rem;
 					    font-style: italic;
 					    font-family: monospace;
 					    background: yellow;
+					    display: none;
 					  	span{
 
 							padding: .3rem;
@@ -69,7 +83,7 @@ div{
 		div{
 			&#message-input-container{
 				border-top: 2px solid blue;
-				height:22%;
+				height:20%;
 				/*position: fixed;*/
     			bottom:4rem;
     			display: flex;

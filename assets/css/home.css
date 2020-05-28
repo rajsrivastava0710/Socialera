@@ -1,6 +1,13 @@
 div#home-container {
   display: flex; }
 
+div#welcome-text {
+  position: absolute;
+  font-size: 4rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 8rem; }
+
 div.main-head {
   margin: 1.5rem .5rem 1.5rem 1rem;
   font-size: 3rem; }

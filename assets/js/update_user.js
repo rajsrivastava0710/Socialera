@@ -9,6 +9,7 @@ for(let i=0;i<input.length-1;i++){
 }
 
 imageFile.on('change',function(event){
+	console.log(event)
 	let value = $(this).val();
 	let arr = value.split('.');
 	let last = arr.length-1;

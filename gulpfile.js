@@ -61,7 +61,7 @@ gulp.task('js', function(done){
     done();
 });
 
-
+    
 gulp.task('images', function(done){
     console.log('compressing images...');
     gulp.src('./assets/**/*.+(png|jpg|gif|svg|jpeg)')
@@ -76,6 +76,7 @@ gulp.task('images', function(done){
         .pipe(gulp.dest('./public/assets'));
         done();
 });
+
 
 
 // empty the public/assets directory

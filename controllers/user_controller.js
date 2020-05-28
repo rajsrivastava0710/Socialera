@@ -56,14 +56,17 @@ module.exports.update = async function(req, res){
                 	req.flash('error','Oops! Some error encountered while updation!')
                 	return res.redirect('back');}
                 
+                user.email = req.user.email;//this hould never change
+                user.password = req.user.password; //this should also not change from here
+                //changeable properties
                 user.name = req.body.name;
-                user.email = req.body.email;
+                
                
-               
+                console.log(req.body)
                 if (req.file){//if user is uploading a file
                 		
                 	let AVATAR_PATH = path.join(__dirname,'..',user.avatar);
-                	let tempPath = User.avatarPath+'/'+req.file.filename;
+                	let tempPath = User.avatarPath + '/' + req.file.filename;
                		let INAPPROPRIATE_FILE_PATH = path.join(__dirname,'..',tempPath);
 
                 	if(req.file.mimetype.split('/')[0] != 'image' || req.file.size >1024*500 ){
@@ -140,7 +143,7 @@ module.exports.deleteUser = async function(req,res){
 
 		//Nodemailer Mail
 
-		deleteUserMailer.deleteUser(user_);
+		deleteUserMailer.deleteUser(user);
 
 		//
 
@@ -275,6 +278,7 @@ module.exports.createSession = function(req,res){
 
 module.exports.removeSession = function(req,res){
 	req.logout();
+	res.clearCookie('cookie_1');
 	req.flash('success','Logged out successfully..');
 	return res.redirect('/');
 }
@@ -301,12 +305,13 @@ module.exports.confirmAccount = async function(req,res){
 }
 
 module.exports.resetPasswordPage = async function(req,res){
-	let reset = await Reset.find({token:req.params.id});
+	let reset = await Reset.findOne({token:req.params.id});
+	console.log(reset)
 	if(reset.isValid == true){
 		return res.render('resetPassword',{
 		resetToken : req.params.id,
 		title:'Socialera/Reset Password'
-	});
+	})
 	}else{
 		return res.status(403).json({
 			message:'Your token has expired'

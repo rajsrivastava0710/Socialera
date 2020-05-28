@@ -11,7 +11,7 @@
 
 			    Hello <%=user.name %> , You created an account on Socialera with this email Id (<span style='color:#9c1d1d'>Password : <%=user.password %></span>)</p>
 			    <% if(!user.isValid){ %>
-	<p><a style='color:#3131a9;font-size: 1.6rem'href='http:localhost:8000/users/confirm_account/<%= user.activationKey %>' target='_blank'>Account Verification Link</a>
+	<p><a style='color:#3131a9;font-size: 1.6rem' href='http:localhost:8000/users/confirm_account/<%= user.activationKey %>' target='_blank'>Account Verification Link</a>
 		<p style='font-size: 1.4rem'>Please open this link in a new tab !</p>
 	</p>
 				<% } %>

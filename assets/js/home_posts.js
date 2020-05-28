@@ -1,18 +1,26 @@
 {   
     // method to submit the form data for new post using AJAX
     let createPost = function(){
-        let newPostForm = $('#new-post-form');
-
-        newPostForm.submit(function(e){
+    	let newPostForm = $('#new-post-form');
+        // let formData = new FormData($('#new-post-form'));
+        let plain_form = document.querySelector('#new-post-form');
+	    newPostForm.submit(function(e){
             e.preventDefault();
+
+            formData = new FormData(plain_form);
 
             $.ajax({
                 type: 'post',
                 url: '/posts/create',
-                data: newPostForm.serialize(),//convert form data into json
+                dataType:'json',
+                processData: false,
+                contentType: false,
+                data: formData,
+                // data: newPostForm.serialize(),//convert form data into json
                 success: function(data){
                     // console.log(data);
                 	$('#new-post-form textarea').val('');
+                 $('#new-post-form input#post-pic').val('');   
                     let newPost = newPostDom(data.data.post);
                     $('#post-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
@@ -60,7 +68,7 @@
                 <a class = 'delete-post-button' href='/posts/destroy/${ post._id  }'>X</a>
             </small>
                 
-               <img src='${post.pic}'/ alt='Picture'>
+               <img src='${post.pic}'/ alt='Picture' width=200 height=200>
             ${ post.content  }
                         
             <div class='like-pallet'>
@@ -127,7 +135,7 @@
         $('#post-container>ul>li').each(function(){
             let self = $(this);
             deletePost($(' .delete-post-button', self));
-
+            // new ToggleLike($(' .toggle-like-button', self));
             // get the post's id by splitting the id attribute
             let postId = self.prop('id').split("-")[1]
             new PostComments(postId);
