@@ -16,3 +16,10 @@
 [0mGET /undefined [33m404 [0m10.683 ms - 148[0m
 [0mGET /users/5ecbb1a1f320640c7cc4cc02 [33m404 [0m18.706 ms - 169[0m
 [0mGET /undefined [33m404 [0m15.794 ms - 148[0m
+[0mGET /favicon.ico [33m404 [0m21.549 ms - 150[0m
+[0mGET /favicon.ico [33m404 [0m17.211 ms - 150[0m
+[0mGET /users/reset_password/token/80eb6ba57f0aa7502cbe [33m403 [0m20.887 ms - 36[0m
+[0mGET /users/reset_password/token/80eb6ba57f0aa7502cbe [33m403 [0m37.495 ms - 36[0m
+[0mGET /users/reset_password/token/80eb6ba57f0aa7502cbe [33m403 [0m26.154 ms - 36[0m
+[0mGET /users/reset_password/token/80eb6ba57f0aa7502cbe [33m403 [0m27.644 ms - 36[0m
+[0mPOST /users/reset_password/80eb6ba57f0aa7502cbe [33m403 [0m21.455 ms - 63[0m

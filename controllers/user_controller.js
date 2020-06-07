@@ -370,23 +370,41 @@ module.exports.resetToken = async function(req,res){
 			
 			if(!reset){
 				await Reset.create({
-				token:crypto.randomBytes(10).toString('hex'),
-				user:user.id,
-				isValid:true
+				token: crypto.randomBytes(10).toString('hex'),
+				user: user.id,
+				isValid: true,
+				waitingTimeOver: true
 			});
 				reset = await Reset.findOne({user:user.id});
-			}
-			reset.isValid = true;
-			reset.save();
 			
+			}else{
+			
+			reset.isValid = true;
+			// reset.save();
+			}
 			
 			reset = await reset.populate('user').execPopulate();
 
+			if(reset.waitingTimeOver){
+
+			await setTimeout(function(){
+				reset.waitingTimeOver = true;
+				reset.isValid = false;
+				reset.save();
+			},900000);
+
+
+			reset.waitingTimeOver = false;
+			reset.save();
+
 			//Nodemailer Mail
 			resetPasswordMailer.resetLink(reset);
-			//
+
+			req.flash('long','We have sent the password reset link to this E Mail Id , It would be valid for only 15 minutes ...')
 			
-			req.flash('long','We have sent the password reset link to this E-Mail Id !')
+			}else{
+ 			req.flash('long','You can get the reset password mail again after 15 minutes !')
+			}
 			return res.redirect('back');
 		}else{
 			req.flash('error','This E-Mail Id does not exist in our database');

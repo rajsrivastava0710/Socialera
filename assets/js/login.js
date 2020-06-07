@@ -3,6 +3,7 @@ let password = $('#password');
 let warning = $('.warning');
 let forgot_form = $('.hide');
 let forgot_btn = $('.forgot-pass');
+
 forgot_form.hide();
 warning.hide();
 email.on('focus',function(){

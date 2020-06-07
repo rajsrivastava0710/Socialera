@@ -12,7 +12,11 @@ const resetSchema = new mongoose.Schema({
 	},
 	isValid:{
 		type: Boolean,
+	},
+	waitingTimeOver:{
+		type:Boolean
 	}
+
 },{
 	timestamps: true
 });

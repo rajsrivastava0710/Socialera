@@ -24,10 +24,11 @@ div{
     align-items: center;
     width: 0;
     position: fixed;
+    height:100%;
     right: 0;
-    z-index:10;
-    background: black;
-    transition: 1s width ease-in-out;
+    z-index:100;
+    background: linear-gradient(35deg, #c13e3ebd, #646294e0,#5bb253d6);
+    transition: .25s width ease-in-out;
     div{
     	box-sizing: border-box;
     	/*margin-bottom: 10px;*/
@@ -42,7 +43,7 @@ div{
     	}
     	a{
     		font-weight: 600;
-    		color: white;
+    		color: #0e223b;
     	}
     	input[type='text']{
 		    /*height: 100%;*/
