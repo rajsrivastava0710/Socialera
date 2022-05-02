@@ -73,11 +73,12 @@ section{
 			&#post-ul>li{
 				div{
 					&.post-comment-list{
-						small{
+						div{
 							&.cmnt-date{
-								font-size: 1rem;
-								float: right;
+								font-size: .9rem;
+								// float: right;
 								margin-right: 1rem;
+								font-size: 1rem;
 							}
 						}
 					}
@@ -85,19 +86,21 @@ section{
 				box-sizing: border-box;
 				border:2px solid black;
 				margin-bottom: 2rem;
-				padding-bottom: 2rem;
-				padding-left: 2rem;
+				padding: 15px;
 				div{
 					&.like-pallet{
 						width: 100%;
 						border-top:2px solid black;
 						border-bottom: 2px solid black;
 						margin-top: 1.5rem;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
 					}
 				}
 				span{
 					&.post-date{
-						float:right;
+						// float:right;
 						margin-right: 1rem;
 						font-size: 1rem;
 					}

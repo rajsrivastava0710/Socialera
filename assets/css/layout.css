@@ -3,6 +3,8 @@ body {
   /*font-size:$medium;*/
   background-color: #f6f6fb8f;
   margin: 0 0; }
+  body a {
+    text-decoration: none; }
   body #layout-body {
     background: linear-gradient(45deg, #d0dbdebf, #f4e5cee6);
     font-size: 2rem;

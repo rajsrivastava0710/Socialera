@@ -61,19 +61,20 @@ section #post-container ul {
     box-sizing: border-box;
     border: 2px solid black;
     margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 2rem; }
-    section #post-container ul#post-ul > li div.post-comment-list small.cmnt-date {
-      font-size: 1rem;
-      float: right;
-      margin-right: 1rem; }
+    padding: 15px; }
+    section #post-container ul#post-ul > li div.post-comment-list div.cmnt-date {
+      font-size: .9rem;
+      margin-right: 1rem;
+      font-size: 1rem; }
     section #post-container ul#post-ul > li div.like-pallet {
       width: 100%;
       border-top: 2px solid black;
       border-bottom: 2px solid black;
-      margin-top: 1.5rem; }
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
     section #post-container ul#post-ul > li span.post-date {
-      float: right;
       margin-right: 1rem;
       font-size: 1rem; }
 

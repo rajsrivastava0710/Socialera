@@ -39,7 +39,8 @@ module.exports.toggleLike = async function(req,res){
 
 		return res.status(200).json({
 			data:{
-				deleted:deleted
+				deleted:deleted,
+				parentItem: req.query.type
 			}
 		})
 

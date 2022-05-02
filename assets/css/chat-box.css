@@ -1,15 +1,14 @@
 div#chatbox {
-  /*display:none;*/
-  display: flex;
+  display: none;
   flex-direction: column;
-  background: cyan;
+  background: #c0e2e2;
   font-size: 1.3rem;
   height: 48vh;
   width: 16rem;
-  border: 2px solid red;
+  border: 2px solid mediumblue;
   position: fixed;
-  /*top:50.4vh;*/
-  bottom: .5rem;
+  /* top: 50.4vh; */
+  bottom: 0.5rem;
   right: 0.5rem;
   /*div{
 			&#chat-header{
@@ -32,6 +31,7 @@ div#chatbox {
       position: relative;
       height: 80%;
       overflow-y: auto;
+      line-break: anywhere;
       /*display: flex;
 				flex-direction: column;*/ }
       div#chatbox ul#chat-list-container li {
@@ -39,18 +39,49 @@ div#chatbox {
         padding: .3rem;
         list-style: none; }
         div#chatbox ul#chat-list-container li.other-msg {
-          width: 65%;
+          width: 95%;
           padding: .25rem;
-          align-self: flex-start; }
+          display: flex;
+          flex-direction: column; }
+          div#chatbox ul#chat-list-container li.other-msg div:nth-child(1) {
+            font-size: 1.2rem;
+            font-family: monospace;
+            font-weight: 600;
+            padding: 2px; }
+          div#chatbox ul#chat-list-container li.other-msg div:nth-child(2) {
+            font-size: 1.2rem;
+            font-family: system-ui;
+            padding: 5px;
+            border: 2px solid;
+            border-radius: 15px;
+            border: 2px solid rebeccapurple;
+            background: darkseagreen;
+            line-height: 20px; }
           div#chatbox ul#chat-list-container li.other-msg span {
             background-color: green;
             padding: .3rem;
             float: left;
             word-break: break-word; }
         div#chatbox ul#chat-list-container li.self-msg {
-          width: 65%;
+          width: 95%;
           padding: .25rem;
-          align-self: flex-end; }
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end; }
+          div#chatbox ul#chat-list-container li.self-msg div:nth-child(1) {
+            font-size: 1.2rem;
+            font-family: monospace;
+            font-weight: 600;
+            padding: 2px; }
+          div#chatbox ul#chat-list-container li.self-msg div:nth-child(2) {
+            font-size: 1.2rem;
+            font-family: system-ui;
+            padding: 5px;
+            border: 2px solid;
+            border-radius: 15px;
+            border: 2px solid rebeccapurple;
+            background: darkseagreen;
+            line-height: 20px; }
           div#chatbox ul#chat-list-container li.self-msg span {
             background-color: grey;
             padding: .3rem;
@@ -64,27 +95,31 @@ div#chatbox {
           font-size: 1.1rem;
           font-style: italic;
           font-family: monospace;
-          background: yellow;
+          border-bottom: 2px solid darkblue;
           display: none; }
           div#chatbox ul#chat-list-container li.notify span {
             padding: .3rem; }
   div#chatbox div#message-input-container {
-    border-top: 2px solid blue;
-    height: 20%;
-    /*position: fixed;*/
+    border-top: 2px solid darkblue;
+    height: 25%;
+    /* position: fixed; */
     bottom: 4rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%; }
     div#chatbox div#message-input-container div {
       width: 100%;
       text-align: center; }
       div#chatbox div#message-input-container div input#msg-text {
-        color: red;
-        width: 90%; }
-      div#chatbox div#message-input-container div button#msg-send {
-        color: green;
-        border: none;
+        color: black;
         width: 90%;
-        background: blue; }
+        font-family: system-ui;
+        font-weight: 600; }
+      div#chatbox div#message-input-container div button#msg-send {
+        color: white;
+        background: darkblue;
+        /* height: 25px; */
+        height: 100%;
+        border: 2px solid #1a237e;
+        border-radius: 10px; }

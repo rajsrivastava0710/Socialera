@@ -1,17 +1,17 @@
 div{
 	&#chatbox{
-		/*display:none;*/
-		display: flex;
+		display:none;
+		// display: flex;
 		flex-direction: column;
-		background: cyan;
+		background: #c0e2e2;
 		font-size: 1.3rem;
-		height:48vh;
-		width:16rem;
-		border:2px solid red;
+		height: 48vh;
+		width: 16rem;
+		border: 2px solid mediumblue;
 		position: fixed;
-		/*top:50.4vh;*/
-		bottom:.5rem;
-		right:0.5rem;
+		/* top: 50.4vh; */
+		bottom: 0.5rem;
+		right: 0.5rem;
 		
 		/*div{
 			&#chat-header{
@@ -34,6 +34,7 @@ div{
 				position: relative;
 				height:80%;
 				overflow-y:auto;
+				line-break: anywhere;
 				/*display: flex;
 				flex-direction: column;*/
 				li{
@@ -41,9 +42,27 @@ div{
 					padding:.3rem;
 					list-style: none;
 					&.other-msg{
-						width:65%;
+						width:95%;
 						padding:.25rem;
-						align-self: flex-start;
+						display: flex;
+						flex-direction: column;
+
+						div:nth-child(1) {
+							font-size: 1.2rem;
+							font-family: monospace;
+							font-weight: 600;
+							padding: 2px;
+						}
+						div:nth-child(2) {
+							font-size: 1.2rem;
+							font-family: system-ui;
+							padding: 5px;
+							border: 2px solid;
+							border-radius: 15px;
+							border: 2px solid rebeccapurple;
+							background: darkseagreen;
+							line-height: 20px;
+						}
 						span{
 							background-color: green;
 							padding:.3rem;
@@ -52,9 +71,27 @@ div{
 						}
 					}
 					&.self-msg{
-						width:65%;
+						width:95%;
 						padding:.25rem;
-						align-self: flex-end;
+						display: flex;
+						flex-direction: column;
+						align-items: flex-end;
+						div:nth-child(1) {
+							font-size: 1.2rem;
+							font-family: monospace;
+							font-weight: 600;
+							padding: 2px;
+						}
+						div:nth-child(2) {
+							font-size: 1.2rem;
+							font-family: system-ui;
+							padding: 5px;
+							border: 2px solid;
+							border-radius: 15px;
+							border: 2px solid rebeccapurple;
+							background: darkseagreen;
+							line-height: 20px;
+						}
 						span{
 							background-color: grey;
 							padding: .3rem;
@@ -70,10 +107,9 @@ div{
 						font-size: 1.1rem;
 					    font-style: italic;
 					    font-family: monospace;
-					    background: yellow;
+						border-bottom: 2px solid darkblue;
 					    display: none;
 					  	span{
-
 							padding: .3rem;
 						}
 					}
@@ -82,29 +118,34 @@ div{
 		}
 		div{
 			&#message-input-container{
-				border-top: 2px solid blue;
-				height:20%;
-				/*position: fixed;*/
-    			bottom:4rem;
-    			display: flex;
-    			flex-direction: column;
-    			justify-content: center;
-    			width: 100%;
+				border-top: 2px solid darkblue;
+				height: 25%;
+				/* position: fixed; */
+				bottom: 4rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				width: 100%;
     			div{
     				width:100%;
     				text-align: center;
     				input{
     				&#msg-text{
-    					color:red;
-    					width: 90%
+    					color: black;
+						width: 90%;
+						font-family: system-ui;
+						font-weight: 600;
     				}
     				}
     			    button{
     			    &#msg-send{
-    					color:green;
-    					border:none;
-    					width: 90%;
-    					background: blue
+
+						color: white;
+						background: darkblue;
+						/* height: 25px; */
+						height: 100%;
+						border: 2px solid #1a237e;
+						border-radius: 10px;
     				} 
     				}
     			}

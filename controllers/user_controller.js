@@ -69,7 +69,7 @@ module.exports.update = async function(req, res){
                 	let tempPath = User.avatarPath + '/' + req.file.filename;
                		let INAPPROPRIATE_FILE_PATH = path.join(__dirname,'..',tempPath);
 
-                	if(req.file.mimetype.split('/')[0] != 'image' || req.file.size >1024*500 ){
+                	if(req.file.mimetype.split('/')[0] != 'image' || req.file.size >1024*5500 ){
 
                 		//deleting the image that got stored but did not qualify the above rule
                 		fs.unlinkSync(INAPPROPRIATE_FILE_PATH);
@@ -261,11 +261,11 @@ module.exports.create = function(req,res){
 				req.flash('success','User Signup Successful !');
 				console.log(user);
 				req.flash('long','We are sending account activation link to your E-Mail Id');		
-				return res.redirect('/users/login');
+				return res.redirect('back');
 			})
 		}else{
 			req.flash('error','User with this E-Mail Id already exists!');
-			return(res.redirect('back'));
+			return res.redirect('back');
 		}
 	})
 }
@@ -403,7 +403,7 @@ module.exports.resetToken = async function(req,res){
 			req.flash('long','We have sent the password reset link to this E Mail Id , It would be valid for only 15 minutes ...')
 			
 			}else{
- 			req.flash('long','You can get the reset password mail again after 15 minutes !')
+ 			req.flash('long','You can get the reset password mail again only after 15 minutes from the last request for Reset Password !')
 			}
 			return res.redirect('back');
 		}else{

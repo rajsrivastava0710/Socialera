@@ -9,18 +9,6 @@
 
 	
 	<div><%= profile_user.name %></div>
-	<div>
-		Friends:
-		<ul id='friend-list'>
-		<% for(friend of profile_user.friends){ %>
-			<% if(friend.from_user.id == profile_user.id){ %>
-			<li><a href='/users/profile/<%= friend.to_user.id %>'><%= friend.to_user.name %></a></li>
-			<% }else{ %>
-			<li><a href='/users/profile/<%= friend.from_user.id %>'><%= friend.from_user.name %></a></li>
-			<% } %> 
-		<% } %>
-		</ul>
-	</div>
 	
 	<% if(profile_user.id != locals.user.id){ %> 
 
@@ -36,12 +24,20 @@
 	<% } %>
 
 	<% if(!isFriend){ %>
-	<button>
-	<div id='add-friend-<%= profile_user._id %>'><a class='toggle-friend' href='/users/profile/<%= profile_user.id %>/toggle-friend'>Add Friend +</a></div>
+	<button style = "padding: 0;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: #4daf4d;">
+	<div id='add-friend-<%= profile_user._id %>' style = "font-size: 2rem;font-family: 'Circular-Loom';">
+		<a class='toggle-friend' href='/users/profile/<%= profile_user.id %>/toggle-friend'>Add Friend +</a></div>
 	</button>
 	<% }else{ %>
-	<button>
-	<div id='add-friend-<%= profile_user._id %>'><a class='toggle-friend' href='/users/profile/<%= profile_user.id %>/toggle-friend'>Unfriend -</a></div>
+	<button style = "padding: 0;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: #4daf4d;">
+	<div style = "font-size: 2rem;font-family: 'Circular-Loom';" id='add-friend-<%= profile_user._id %>'>
+		<a class='toggle-friend' href='/users/profile/<%= profile_user.id %>/toggle-friend'>Unfriend -</a></div>
 	</button>
 	<% } %>
 
@@ -49,7 +45,7 @@
 </div>
 <div class = 'detail-container'>
 
-<div><strong>E-mail</strong> : <%= profile_user.email %></div>
+<div><span style = "font-weight: 600;text-decoration: underline;">E-mail</span> : <span><%= profile_user.email %></span></div>
 
 <% if(user.id == profile_user.id){ %>
 <div>
@@ -66,6 +62,18 @@
 	</span>
 </div>
 <% } %>
+<div style = "margin-top: 20px;"> 
+	<div style = "font-weight: 600;text-decoration: underline;">Friends:</div>
+	<div id='friend-list'>
+	<% for(friend of profile_user.friends){ %>
+		<% if(friend.from_user.id == profile_user.id){ %>
+		<div><a href='/users/profile/<%= friend.to_user.id %>'><%= friend.to_user.name %></a></div>
+		<% }else{ %>
+		<div><a href='/users/profile/<%= friend.from_user.id %>'><%= friend.from_user.name %></a></div>
+		<% } %> 
+	<% } %>
+		</div>
+</div>
 
 </div>
 

@@ -1,49 +1,56 @@
-<li id='comment-<%=comment._id %>'>
-	<p>
+<li id='comment-<%=comment._id %>' style = "margin: 10px;">
+	<div style="display: flex;align-items: center;">
+		<div style = "width: 38px;">
 		<% if((locals.user) && (locals.user.id == comment.user._id)){ %>
-			<small>
-				<a class='delete-comment-button' href='/comments/destroy/<%= comment.id %>'>X</a>
-			</small>
+				<a class = 'delete-comment-button' href='/comments/destroy/<%= comment._id %>'><i style = "color: #ea3a3a; margin-right: 10px;" class="fa fa-trash"></i></a>
 		<% } %>
-		<small><%= comment.content %> : </small>
-		<small><%= comment.user.name %></small>
-		<small class='cmnt-date'><%= moment(comment.createdAt).fromNow() %></small>
-
-		<div class='like-pallet'>
+		</div>
+		<div style="display: flex;flex-direction: column;width: 100%;">
+			<div style="display: flex;
+			flex-direction: row;
+			font-size: 1.3rem;
+			justify-content: space-between;">
+				<div style="font-family: system-ui;
+				font-weight: 600;display: flex;">
+				<div style = "text-decoration: underline;"><%= comment.user.name %></div>
+				<div style="margin-left: 10px;">
+					<% if (locals.user){ %>
+					<!-- does not look optimal to me -->
+					<% let liked = false; %>
+					<% for(x of comment.likes){ %>
+						   <% if(x.user == locals.user.id){ %>
+							<% liked=true; %>
+							<% break; %>
+						<% } %>
+					<% } %>
+					<% if(!liked){ %>
+						<a class="toggle-like-button" data-parentid = "<%=comment._id %>"  data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+							<i style="font-size:24px;color: white;" class="fa fa-thumbs-up" ></i>
+						</a>
+						<span id = 'like-comment-<%= comment._id %>' style = "color: #5050bf"><%= comment.likes.length %> Likes</span>
+					<% }else{%>
+						<a class="toggle-like-button" data-parentid = "<%=comment._id %>" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+							<i style="font-size:24px;color:blue;" class="fa fa-thumbs-up" ></i>
+						</a>
+						<span id = 'like-comment-<%= comment._id %>' style="color: #5050bf"><%= comment.likes.length %> Likes</span>
+					<% } %>
 				
-				<!-- <% if (locals.user){ %>
-                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
-                        <%= comment.likes.length %> Likes
-                </a>
-	            <% }else{ %>
-	                <%= comment.likes.length %> Likes
-	            <% } %> -->
+					<% }else{ %>
+						
+						<a>
+							<i style="font-size:24px;color: white;" class="fa fa-thumbs-up" ></i>
+							<span style = "color:#5050bf"><%= comment.likes.length %> Likes</span>
+						</a>
+				
+					<% } %>
+			</div>
+				</div>		
+				<div class='cmnt-date'><%= moment(comment.createdAt).fromNow() %></div> 
+			</div>
+			<div style="font-size:1.2rem;font-family: system-ui;"><%= comment.content %> </div>
+		</div>
 
-	            <% if (locals.user){ %>
-				<!-- does not look optimal to me -->
-				<% let liked = false; %>
-            	<% for(x of comment.likes){ %>
-               		<% if(x.user == locals.user.id){ %>
-            			<a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment" style='color:red'>
-                        <%= comment.likes.length %> Likes
-                		</a>
-                		<% liked=true; %>
-                		<% break; %>
-            		<% } %>
-            	<% } %>
-            	<% if(!liked){ %>
-                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment" style='color:white'>
-                    <%= comment.likes.length %> Likes
-                </a>
-                <% } %>
-	        
-	            <% }else{ %>
-	        		
-	                <a style='color:white'><%= comment.likes.length %> Likes</a>
-	        
-	            <% } %>
-	            
-		</div>	
+		
 
-	</p>
+	</div>
 </li>

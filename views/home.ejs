@@ -5,17 +5,23 @@
 
 	<% if(locals.user){ %>
 	
-	<div class='main-sub-head'>Post Here:</div>
-	<form action="/posts/create" method="post" id='new-post-form' enctype="multipart/form-data">
-		<div>
-		<textarea name ='content' rows='7' cols='45' placeholder="Type your post here" required></textarea>
+	<!-- <div class='main-sub-head'>Post Here:</div> -->
+	<form style = "margin-top: 15px; display: flex;" action="/posts/create" method="post" id='new-post-form' enctype="multipart/form-data">
+		<div style="display: flex;">
+		<textarea style = "padding: 7px" name ='content' rows='7' cols='50' placeholder="Type your post here" required></textarea>
 		</div>
-		<div>
-		<label for='post-pic'>Upload a picture now</label>
+		<div style="display: flex;flex-direction: column;left:15px;position: relative;justify-content: space-evenly;">
+		<label for='post-pic' style = "font-size: 1.3rem;
+		text-decoration: underline;
+		font-family: cursive;" >Upload a picture</label>
 		<input id='post-pic' type='file' name='pic' placeholder='Upload a picture' title='Select a picture to upload'>
-		</div>
-		<div>
-			<input type='submit' value="Post">
+		<input 
+		style = "width: 80px;
+		font-family: cursive;
+		font-weight: 600;
+		border-radius: 10px;
+		border: 2px solid black;"
+		type='submit' value="Post">
 		</div>
 	</form>
 	<% } %>

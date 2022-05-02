@@ -18,28 +18,35 @@ class ToggleLike{
             })
             .done(function(data) {
                 let likesCount = parseInt($(self).attr('data-likes'));
+                let parentItem = data.data.parentItem.toLowerCase()
+                let parentId = $(self).attr('data-parentid')
+                let setColor;
                 if (data.data.deleted == true){
                     likesCount -= 1;
-                    $(self).css({
-                        color:'white'
-                    })
+                    // $(self).css({
+                    //     color:'white'
+                    // })
+                    setColor = 'white'
                     
                 }else{
                     likesCount += 1;
-                    $(self).css({
-                        color:'red'
-                    })
+                    // $(self).css({
+                    //     color:'blue'
+                    // })
+                    setColor = 'blue'
                 }
-    
                 $(self).attr('data-likes', likesCount);
-                $(self).html(`${likesCount} Likes`);
-
+                $(self).html(`
+                <i style="font-size:24px;color: ${setColor}" class="fa fa-thumbs-up" ></i>
+                `);
+                $(`#like-${parentItem}-${ parentId }`).html(`
+                ${likesCount} Likes
+                `)
             })
             .fail(function(errData) {
                 console.log(errData,'error in completing the request');
             });
             
-
         });
     }
 }

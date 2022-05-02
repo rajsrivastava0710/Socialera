@@ -53,24 +53,38 @@ class PostComments{
 
     newCommentDom(comment){
         return $(`
-        <li id='comment-${comment._id }'>
-            <p>
-                <small>
-                    <a class='delete-comment-button' href='/comments/destroy/${ comment._id }'>X</a>
-                </small>
-                <small>${ comment.content } : </small>
-                <small>${ comment.user.name }</small>
-                <small class='cmnt-date'>Just Now</small>
-
-                <div class='like-pallet'>
-                        
-                        <a style='color:white;' class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
-                            0 Likes
-                        </a>
-       
-                </div>  
-            </p>
-        </li>
+<li id='comment-${ comment._id }' style = "margin: 10px;">
+	<div style="display: flex;align-items: center;">
+			<div>
+				<a class = 'delete-comment-button' href='/comments/destroy/${  comment._id }'><i style = "color: #ea3a3a; margin-right: 10px;" class="fa fa-trash"></i></a>
+			</div>
+		<div style=
+            "display: flex;
+            flex-direction: column;
+            width: 100%;">
+			
+            <div style="display: flex;
+			    flex-direction: row;
+			    font-size: 1.3rem;
+			    justify-content: space-between;">
+				
+                <div style="font-family: system-ui;
+				    font-weight: 600;
+                    display: flex;">
+				    <div style = "text-decoration: underline;">${  comment.user.name }</div>
+				    <div style="margin-left: 10px;">
+				        <a class="toggle-like-button" data-parentid = "${ comment._id }"  data-likes="${ comment.likes.length }" href="/likes/toggle/?id=${ comment._id }&type=Comment">
+							<i style="font-size:24px;color: white;" class="fa fa-thumbs-up" ></i>
+						</a>
+						<span id = 'like-comment-${  comment._id }' style = "color: #5050bf">${ comment.likes.length } Likes</span>
+			        </div>
+				</div>		
+				<div class='cmnt-date'>Just Now</div> 
+			</div>
+			<div style="font-size:1.2rem;font-family: system-ui;">${ comment.content }</div>
+		</div>
+	</div>
+</li>
         `)
     }
 

@@ -1,6 +1,9 @@
 $medium : 2rem;
 
 body{
+	a{
+		text-decoration: none;
+	}
 	position:relative;
 	/*font-size:$medium;*/
 	background-color:#f6f6fb8f;

@@ -1,5 +1,7 @@
 production_logs/
 node_modules/
 public/
+config/environment.js
 uploads/users/avatars/
+uploads/posts/pics/
 rev-manifest.json

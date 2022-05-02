@@ -18,9 +18,9 @@
                 data: formData,
                 // data: newPostForm.serialize(),//convert form data into json
                 success: function(data){
-                    // console.log(data);
+                    console.log(data.data.post);
                 	$('#new-post-form textarea').val('');
-                 $('#new-post-form input#post-pic').val('');   
+                    $('#new-post-form input#post-pic').val('');   
                     let newPost = newPostDom(data.data.post);
                     $('#post-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
@@ -54,51 +54,80 @@
     // method to create a post in DOM
 
     let newPostDom = function(post){
-            return $(`<li id='post-${  post._id }'>
+            return $(`<li id='post-${  post._id }' style = "border-radius: 12px;
+            box-shadow: 0 0 11px 3px #b0cad8;">
         
-        <p>
-            <div>
-                <a href='/users/profile/${ post.user._id  }'>${ post.user.name  }</a> posted on Socialera
-                <span class='post-date'>
-                    Just Now
-                </span>
+        <div>
+            <div style="display: flex;justify-content: space-between;">
+                <div style = "
+                font-family: 'Circular-Loom';
+                font-size: 2rem;
+                border-bottom: 2px solid black;
+                margin-bottom: 8px;">
+                    <a href='/users/profile/${ post.user._id }'>${ post.user.name }</a> posted on Socialera
+                </div>
+                <div>
+                    <a class = 'delete-post-button' href='/posts/destroy/${ post._id }'><i style = "color: #ea3a3a; margin-right: 10px;" class="fa fa-trash"></i></a>
+                </div>
             </div>
-                        
-            <small>
-                <a class = 'delete-post-button' href='/posts/destroy/${ post._id  }'>X</a>
-            </small>
-                
-               <img src='${post.pic}'/ alt='Picture' width=200 height=200>
-            ${ post.content  }
-                        
+
+            ${post.pic ? `<div><img src="${ post.pic }" width=200 height=200></div> ` : ``}
+
+            <div 
+            style="font-family: system-ui;
+                font-size: 1.5rem;">
+                ${ post.content }
+            </div>       
+        
             <div class='like-pallet'>
-                
-                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${ post._id }&type=Post" style='color:white'>
-                        0 Likes
-                </a>        
-                
-            </div>          
-        </p>
+				<div>
+                <a class="toggle-like-button" data-parentid = ${ post._id } data-likes=${ post.likes.length }" href="/likes/toggle/?id=${post._id}&type=Post">
+					<i style="font-size:24px;color:white;" class="fa fa-thumbs-up" ></i>
+				</a>
+				<span style="color: #5050bf;
+                font-size: 1.4rem;" id = "like-post-${post._id}">${ post.likes.length } Likes</span>
+				</div>
+	            <span class='post-date'>
+					Just Now
+				</span>
+			</div>
+                  
+        </div>
 
         <div class='post-comment'>
-                        
-            <form id="post-${ post._id  }-comments-form" action="/comments/create" method="post">
-            
-                <input type="text" name="content" placeholder="Enter your comment here.." title='Type your comment here !' required>
-                <input type='hidden' name='post' value='${ post._id  }'>
-                <input type='submit' value="Add Comment">
-            
-            </form>
-        
-        </div>
 
-        <div class='post-comment-list'>
+			<form
+			style = "display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			margin-top: 20px;" 
+			id="post-${ post._id }-comments-form" action="/comments/create" method="post">
+			
+				<input 
+				style = "font-size: 1.2rem;
+				width: 85%;
+				border: 2px solid;
+				border-radius: 7px;"
+				type="text" name="content" placeholder="Enter your comment here.." title='Type your comment here !' required>
+				<input type='hidden' name='post' value='${ post._id }'>
+				<input style = "background: #1e90ff;
+				width: 80px;
+				font-family: cursive;
+				font-weight: 600;
+				border-radius: 10px;
+				border: 2px solid black;" 
+				type='submit' value="Comment">
+			
+			</form>
 
-            <ul id='post-comments-${ post._id  }'>
-                        
-            </ul>
-        
-        </div>
+		</div>
+
+		<div class='post-comment-list'>
+			<ul id='post-comments-${ post._id }'>
+			
+			</ul>
+		
+		</div>
 
     </li>`)
     }

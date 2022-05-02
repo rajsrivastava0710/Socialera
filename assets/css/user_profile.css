@@ -35,6 +35,8 @@ body {
 			    }
 				}
 			}*/ }
+    body div.pic-container a.toggle-friend {
+      color: white; }
     body div.pic-container img {
       /*&#dp{
 					display: none;
@@ -56,7 +58,15 @@ body {
   body div.detail-container {
     width: 75%;
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    margin-right: 14px;
+    font-family: system-ui; }
+    body div.detail-container #friend-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap; }
+      body div.detail-container #friend-list div {
+        width: 30%; }
     body div.detail-container #confirm {
       visibility: hidden;
       display: flex;
@@ -81,27 +91,44 @@ body {
             border: 2px solid #dc1818; }
             body div.detail-container #confirm span#decision #yes a {
               color: #dc1818; }
+            body div.detail-container #confirm span#decision #yes:hover {
+              background: #ebb2b2; }
           body div.detail-container #confirm span#decision #no {
             border-radius: 10px;
             border: 2px solid #4747dced;
             color: #4747dced;
             cursor: pointer; }
+            body div.detail-container #confirm span#decision #no:hover {
+              background: #8ae1d9; }
         body div.detail-container #confirm span button {
           font-size: 1.5rem; }
         body div.detail-container #confirm span#warning {
           font-size: 1.2rem;
           text-align: justify; }
-  body div button#update {
-    font-size: 1.4rem;
-    border: 2px solid blueviolet;
-    background: #35b1e4; }
-  body div button#delete {
-    /*transition: 0.5s all ease-in-out;*/
-    font-size: 1.4rem;
-    border: 2px solid #367536;
-    background: #f13434; }
-    body div button#delete a {
-      color: black; }
+  body div button {
+    transition: all .6s ease-in-out; }
+    body div button a {
+      transition: all .6s ease-in-out; }
+    body div button#update {
+      font-size: 1.4rem;
+      border: 2px solid blueviolet;
+      background: #35b1e4; }
+      body div button#update:hover {
+        background: #00b5ff;
+        color: white; }
+      body div button#update a:hover {
+        color: white; }
+    body div button#delete {
+      /*transition: 0.5s all ease-in-out;*/
+      font-size: 1.4rem;
+      border: 2px solid #6a1e11;
+      background: #f13434; }
+      body div button#delete:hover {
+        background: #d50f0f; }
+      body div button#delete a {
+        color: black; }
+        body div button#delete a:hover {
+          color: white; }
 
 @media screen and (max-width: 830px) {
   body div.container {

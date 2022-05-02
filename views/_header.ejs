@@ -39,3 +39,23 @@
 	<i class="fa fa-align-justify"></i>
 	</span>
 </header>
+
+<div class='collapsed-navbar'>
+		<div id='collapsed-searchbar'><input type='text' placeholder="Search Here..."/>
+			<button type="submit"><i class="fa fa-search"></i></button>
+		</div>
+		<% if(locals.user){ %>
+		<div>
+			<a href='/users/profile/<%= locals.user.id %>'>
+				<span><%= locals.user.name %></span>
+				<span><img/></span>
+			</a>
+		</div>
+		<div>
+			<a href='/users/remove-session'>LogOut</a>
+		</div>
+		<% }else{ %>
+		<div><a href='/users/login'>SignIn</a></div>
+		<div><a href='/users/signup'>SignUp</a></div>
+		<% } %>
+</div>
