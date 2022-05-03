@@ -32,6 +32,7 @@
 
 <img width="1200" alt="2022-05-03 (1)" src="https://user-images.githubusercontent.com/24823838/166424674-a81e07c6-2773-4e81-9fc6-1f2089de0293.png">
 
+![Screenshot (42)](https://user-images.githubusercontent.com/24823838/166441874-f8311c4e-b070-4dd9-ad6b-ead769c463bb.png)
 
 ## To run on your system:
 
